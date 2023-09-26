@@ -1,0 +1,27 @@
+{
+  "name": "dom-manipulation-library",
+  "version": "1.0.0",
+  "description": "JavaScript library that makes DOM manipulation easy and more managable.",
+  "main": "index.js",
+  "bin": "bin/cli.cjs",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lindelwa122/dom-manipulation-library.git"
+  },
+  "keywords": [
+    "dom-manipulation",
+    "dom",
+    "library",
+    "objects"
+  ],
+  "author": "Lindelwa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lindelwa122/dom-manipulation-library/issues"
+  },
+  "homepage": "https://github.com/lindelwa122/dom-manipulation-library#readme"
+}
