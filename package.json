@@ -1,10 +1,9 @@
 {
-  "name": "@dom-manipulation-library/dml",
-  "version": "1.0.0",
+  "name": "@dom-manipulation-library/create-project",
+  "version": "1.0.3",
   "description": "JavaScript library that makes DOM manipulation easy and more managable.",
   "main": "index.js",
-  "bin": "bin/cli.cjs",
-  "type": "module",
+  "bin": "./bin/cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

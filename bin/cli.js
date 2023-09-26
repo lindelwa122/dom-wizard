@@ -1,9 +1,24 @@
 #!/usr/bin/env node
 
-const fs = require("fs")
+const fs = require("fs");
+const { execSync, exec } = require("child_process");
+
+function runCommand(command) {
+  try {
+    execSync(command, { stdio: "inherit"});
+  } catch (error) {
+    console.error(`Failed to execute ${command}`, e);
+    return false;
+  }
+
+  return true;
+}
+
 
 const projectName = process.argv[2];
 const CURR_DIR = process.cwd();
+
+console.log(`Creating your project '${projectName}'`);
 
 function createDirectoryContents(templatePath, newProjectPath) {
   const filesToCreate = fs.readdirSync(templatePath);
@@ -45,5 +60,18 @@ try {
 createDirectoryContents(`${__dirname}/../template`, `${CURR_DIR}/${projectName}`);
 
 console.log(`
-  Your project template has been created!
-`)
+  Installing dependencies...
+`);
+
+const installedDeps = runCommand(`cd ${projectName} && npm install`);
+
+if (!installedDeps) process.exit();
+
+console.log(`
+  Congratulations! Your project template has been created.
+
+  run 'npm run build' to build your project
+  run 'npm run watch' to open your project on port 8080
+
+  Happy Coding!
+`);
