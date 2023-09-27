@@ -238,3 +238,25 @@ The store will store variables that are supposed to accessible throughout the ap
 - [ ] **updateState**: modifies state.
 
 Read more about how store should work [here]().
+
+**NOTE:** *The unchecked box means the feature is not completed yet, and the checked box means it is completed. You are welcome to work and improve completed features, and feel free to add your own features to issues. Read more about our contributing rules [here]().*
+
+## More ways to contribute
+
+You need not only contribute by writing code, you can help us improve this README, write docs, create tutorials, and more.
+
+- [ ] Improve this README.
+- [ ] Write the docs.
+- [ ] Create a tutorial on our website.
+- [ ] Create video tutorials.
+- [ ] Make a logo for us.
+- [ ] Report bugs.
+- [ ] Add anything you feel should be added.
+
+## License
+
+Distributed under the MIT License. See `LICENSE.txt` for more information.
+
+## Contact 
+
+Lindelwa - nqabenhlemlaba22@gmail.com
