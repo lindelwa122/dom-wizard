@@ -41,7 +41,7 @@ domManager.create(sidebar());
 
 This allows you to easily create elements and their children using simple objects. 
 
-To read more about the features, jump to the [features section]().
+To read more about the features, jump to the [features section](#features).
 
 
 ## Contributing
@@ -79,7 +79,7 @@ If you have a suggestion that would make this better, please fork the repo and c
     git checkout -b <branch-name>
     ```
 
-4. Make your changes or add your new feature. Remember to commit early and commit often. Read our commit rules [here](). 
+4. Make your changes or add your new feature. Remember to commit early and commit often. Read our commit rules [here](/COMMIT_RULES.md). 
 
     * Short commit messages:
         ```
@@ -262,4 +262,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Lindelwa - nqabenhlemlaba22@gmail.com
 
-q.codes__ - https://www.instagram.com/q.codes__
+Instagram__ - [https://www.instagram.com/q.codes__](https://www.instagram.com/q.codes__)
+
+GitHub - https://github.com/lindelwa122
