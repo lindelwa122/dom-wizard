@@ -4,7 +4,7 @@
 
 2. Once a versioned package has been released, the contents of that version MUST NOT be modified. Any modifications MUST be released as a new version.
 
-3. Initially the version was set to 1.0.0 which was not the right thing. It was supposed to be set to 0.0.0 instead, so version 1 should not be considered stable. **
+3. Initially, the version was set to 1.0.0, which was incorrect. It was intended to be set to 0.0.0 instead, so version 1 should not be considered stable.
 
 4. The public API will be defined by version 2.0.0. The way in which the version number is incremented after this release is dependent on this public API and how it changes.
 
