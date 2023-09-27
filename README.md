@@ -2,7 +2,7 @@
 
 A JavaScript library that allows easy manipulation of the DOM. 
 
-Click [here]() to read more about the features.
+Click [here](#features) to read more about the features.
 
 ## Examples
 
@@ -97,17 +97,17 @@ If you have a suggestion that would make this better, please fork the repo and c
     git push origin <branch-name>
     ```
 
-6. Go over to GitHub and create a pull request. Ensure to add a comment explaining what you added. For more info read our contributing rules [here]().
+6. Go over to GitHub and create a pull request. Make sure to include a comment explaining the additions. For more information, please refer to our contributing rules [here](/CONTRIBUTING.md).
 
 ## Features
 
-These are the features the library will have, most of the following aren't built yet and we need you to help us. To read more about each feature click on the subtitle. You can also indicate on the issues tab that you are working on a specific feature even though this is not required. Click [here]() ti read more about our contributing rules.
+These are the features the library will have; most of the following haven't been built yet, and we need your assistance. To learn more about each feature, click on the subtitle. Additionally, you can indicate on the Issues tab that you are working on a specific feature, although this is not mandatory. Click [here](/CONTRIBUTING.md) to read more about our contributing rules.
 
 ### domManager
 
-The main idea of the library was to create something that can allow developers to create, update, modify, and delete the DOM elements with ease. The whole job of **domManager** is to do just that.
+The main idea behind the library was to create a tool that enables developers to easily create, update, modify, and delete DOM elements. The primary function of **domManager** is precisely to accomplish this task.
 
-I wrote the code below a few months ago and it is to show you how hard and error-prone it can be to manually append and modify elements to the DOM.
+I wrote the code below a few months ago and it is to demonstrate how hard and error-prone it can be to manually append and modify elements to the DOM.
 
 ```javascript
 for (account of accounts) {
@@ -150,13 +150,13 @@ The same thing can be done with ease using the 4 functions that **domManager** w
 - [ ] **read**
 - [ ] **delete**
 
-The functions will do exactly as what their names portray, they will provide functionality to create, update, delete, and read elements. Click [here]() to read more about they should work.
+The functions will perform precisely as their names suggest, offering functionality to create, update, delete, and read elements. Click [here](https://github.com/lindelwa122/dom-manipulation-library/issues) to read more about how they should operate.
 
 ### Router
 
-**Router** will allow developers to navigate to different routes of the site without the page reloading.
+**Router** will enable developers to navigate to different routes of the site without the page reloading.
 
-Here's an example of how easy it could be to use this feature in your app.
+Here's an example showcasing how easy it could be to utilize this feature in your app.
 
 ***router.js***
 ```javascript
@@ -192,16 +192,16 @@ domManager.create(initialPage);
 router.register(routes);
 ```
 
-Above we create an initial page with nothing but just a button that says `Click Me - About`. If you click on this button you will be taken to the about page. `route` in the options expects an ID of a certain route.
+Above, we create an initial page with nothing but a button that displays `Click Me - About`. If you click this button, you will be directed to the about page. The `route` in the options expects an ID of a specific route.
 
-Let's take a look at the functions that will make this magic happen:
+Let's delve into the functions that will make this magic happen:
 
 - [ ] **register**: This function will register all the routes as it did on the above example.
-- [ ] **configRoute**: This a helper function that **domManager** will invoke when it finds the property `route` in `options`.
-- [ ] **activate**: This is a private function that is supposed to add a className of active to the clicked element. 
-- [ ] **deactivate**: A private function that removes the className of active.
+- [ ] **configRoute**: This a helper function that **domManager** will invoke when it finds `route` in `options`.
+- [ ] **activate**: This is a private function that is supposed to add a className of `active` to the clicked element. 
+- [ ] **deactivate**: A private function that removes the className of `active`.
 
-To gain a better understand of the above functions click [here]().
+To gain a better understand of the above functions click [here](https://github.com/lindelwa122/dom-manipulation-library/issues).
      
  ### createStyleSheet
 
@@ -227,31 +227,32 @@ createStyleSheet.createCSSRule({
 - [ ] **configStateRule**: Adds a style to an element depending on its state.
 - [ ] **createStyle**: Adds a style to an element.
 
-To gain a better understanding of how these functions should work click [here]().
+To gain a better understanding of how these functions should work click [here](https://github.com/lindelwa122/dom-manipulation-library/issues).
 
 ### store
 
-The store will store variables that are supposed to accessible throughout the app. The user can be able to retrieve, modify these variable from anywhere in the app.
+The store will hold variables that are intended to be accessible throughout the app. Users will be able to retrieve and modify these variables from anywhere within the app.
 
 - [ ] **createStore**: creates all the variables in their initial state.
 - [ ] **getState**: gets the state of a variable.
 - [ ] **updateState**: modifies state.
 
-Read more about how store should work [here]().
+Read more about how store should work [here](https://github.com/lindelwa122/dom-manipulation-library/issues).
 
-**NOTE:** *The unchecked box means the feature is not completed yet, and the checked box means it is completed. You are welcome to work and improve completed features, and feel free to add your own features to issues. Read more about our contributing rules [here]().*
+**NOTE:** *An unchecked box indicates that the feature is not yet completed, while a checked box indicates its completion. You are welcome to work on and improve completed features. Additionally, feel free to propose new features via issues. For more details, please refer to our contributing rules [here](/CONTRIBUTING.md).*
 
 ## More ways to contribute
 
-You need not only contribute by writing code, you can help us improve this README, write docs, create tutorials, and more.
+You can contribute not only by writing code but also by assisting us in enhancing this README, drafting documentation, creating tutorials, and more.
 
-- [ ] Improve this README.
-- [ ] Write the docs.
+- [ ] Enhance this README.
+- [ ] Draft the documentation.
 - [ ] Create a tutorial on our website.
-- [ ] Create video tutorials.
-- [ ] Make a logo for us.
+- [ ] Produce video tutorials.
+- [ ] Write tests.
+- [ ] Design a logo for us.
 - [ ] Report bugs.
-- [ ] Add anything you feel should be added.
+- [ ] Suggest any additional elements you believe should be included.
 
 ## License
 
@@ -260,3 +261,5 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 ## Contact 
 
 Lindelwa - nqabenhlemlaba22@gmail.com
+
+q.codes__ - https://www.instagram.com/q.codes__
