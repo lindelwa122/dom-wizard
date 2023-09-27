@@ -6,7 +6,7 @@
 
 3. If you find a bug, open an issue.  Before filing a new issue, try to make sure your problem doesn’t already exist.
 
-4. A bug fix should not change the function's behaviour completely that it breaks the code that relies on it and the function is no longer backward compatible.
+4. A bug fix should maintain the existing function's behavior, ensuring it remains backward compatible and does not break any code relying on it.
 
 5. If you decide to fix an issue or work on a feature, please be sure to check the comment thread in case somebody is already working on it. If nobody is working on it at the moment, please leave a comment stating that you intend to work on it so other people don’t accidentally duplicate your effort.
 
