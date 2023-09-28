@@ -97,7 +97,7 @@ If you have a suggestion that would make this better, please fork the repo and c
     git push origin <branch-name>
     ```
 
-6. Go over to GitHub and create a pull request. Make sure to include a comment explaining the additions. For more information, please refer to our contributing rules [here](/CONTRIBUTING.md).
+6. Go over to GitHub and create a pull request. Make sure to include a comment explaining the additions. Please include the issue number being addressed in your comment. For instance, if you were resolving issue 6, add `Issue: #6` at the end of your comment. For more information, please refer to our contributing rules [here](/CONTRIBUTING.md).
 
 ## Features
 
@@ -165,9 +165,9 @@ import about from './routes/about';
 import contacts from './routes/contact';
 
 const routes = [
-    { id: 'homePage', route: home, url: 'home' },
-    { id: 'aboutPage', route: about, url: 'about' },
-    { id: 'contactsPage', route: contacts, url: 'contacts' },
+    { id: 'homePage', route: home },
+    { id: 'aboutPage', route: about },
+    { id: 'contactsPage', route: contacts },
 ];
 
 export default routes;
@@ -183,7 +183,11 @@ import routes from './routes/router';
 const initialPage = {
     tagName: "button",
     options: {
-        route: "aboutPage", // look here
+        link: {
+            name: "navigation",
+            to: "home",
+            host: ".sidebar",
+        }, // look here
         innerHTML: "Click Me - About"
     }
 }
@@ -197,7 +201,7 @@ Above, we create an initial page with nothing but a button that displays `Click 
 Let's delve into the functions that will make this magic happen:
 
 - [ ] **register**: This function will register all the routes as it did on the above example.
-- [ ] **configRoute**: This a helper function that **domManager** will invoke when it finds `route` in `options`.
+- [ ] **configureLink**: This a helper function that **domManager** will invoke when it finds `route` in `options`.
 - [ ] **activate**: This is a private function that is supposed to add a className of `active` to the clicked element. 
 - [ ] **deactivate**: A private function that removes the className of `active`.
 
@@ -262,6 +266,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Lindelwa - nqabenhlemlaba22@gmail.com
 
-Instagram__ - [https://www.instagram.com/q.codes__](https://www.instagram.com/q.codes__)
+Instagram - [https://www.instagram.com/q.codes__](https://www.instagram.com/q.codes__)
 
 GitHub - https://github.com/lindelwa122
