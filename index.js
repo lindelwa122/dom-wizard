@@ -65,6 +65,96 @@ const generateContent = () => {
   };
   
   export default generateContent().addTreeToTheDOM;
+
+  const readContent = () => {
+
+    /*checks attribute or property is valid or not 
+    if property returns object invalid eg style... 
+    if returns string valid eg innerHTML*/
+
+    const attributeValidation = (attributeName,attributeValue) => {
+      if(attributeName !== "" && (!attributeValue || typeof(attributeValue) === "object")) {
+        console.error("Please check the attribute either you went wrong in the parameter or please add it in the specified HTML Element");
+        throw new Error("The attribute name mentioned is not qualified");
+      } 
+    }
+
+    /* checks if the property can be pushed or not valid (string) push 
+    object dont push throw error */
+    const arrayValidation = (attributeName,attributeValue) => {
+      return (typeof(attributeValue) === "object") ? 
+      attributeValidation(attributeName,attributeValue) : attributeValue;
+    }
+
+    const read = (selector, attributeName="", all=false) => {
+        
+        /* to make attribute parameter optional the user gives 
+        either nothing or bool if attrubte name not specified*/
+         
+        if (typeof(attributeName) === "boolean") {
+          all = attributeName;
+          attributeName = "";
+        }
+
+        // conditional selection
+        const el = (!all ? document.querySelector(selector) : 
+        document.querySelectorAll(selector));
+
+        let attributeValue;
+        
+        // invalid selector
+        if (!el || el.length === 0) {
+          console.error("Retrieving of the element was not possible. Please check your selector.");
+          throw new Error("Element was not selected from the DOM");
+        }
+
+        // when false and attribute is valid
+        if (!all && attributeName && el.getAttribute(attributeName)) {
+          attributeValue = el.getAttribute(attributeName);      
+          return attributeValue;
+        } 
+
+        // when false and "not attribute" validate return attribute value if valid
+        if (!all && !el.getAttribute(attributeName) &&
+         el[attributeName]) {
+          return typeof(el[attributeName]) === "object"
+          ? attributeValidation(attributeName,attributeValue): el[attributeName];
+        }
+
+        // validation for wrong attributes when false
+        (!all && !el.getAttribute(attributeName)) && 
+        attributeValidation(attributeName,attributeValue);
+
+        // checking if property or attribute
+
+        if (all && (el[0].getAttribute(attributeName) || 
+          el[0][attributeName])) {
+
+          const _attributes = [];
+
+          /* push if "valid attribute" or "valid property"
+          if invalid throws an error to check attributes */
+
+          el.forEach((element) => {
+              _attributes.push(element.getAttribute(attributeName) ||
+              arrayValidation(attributeName,element[attributeName]));
+          })
+
+          return _attributes;
+        }
+
+        // validation for wrong attributes when true
+        (all && !el[0].getAttribute(attributeName)) && 
+        attributeValidation(attributeName,attributeValue);
+
+        // returns the element when attribute not specified 
+        return el;
+    }
+
+    return { read };
+  }
+
+  export { readContent };
   
   const createStyleSheet = (() => {
     const addStyle = (el, declaration) => {
