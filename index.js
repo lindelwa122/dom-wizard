@@ -79,8 +79,8 @@ const generateContent = () => {
       } 
     }
 
-    /* checks if the property can be pushed or not valid (string) push 
-    object dont push throw error */
+    /* checks if the property can be pushed or not,if valid (string) property push it else
+    property returning object(invalid) dont push throw error */
     const arrayValidation = (attributeName,attributeValue) => {
       return (typeof(attributeValue) === "object") ? 
       attributeValidation(attributeName,attributeValue) : attributeValue;
@@ -89,7 +89,7 @@ const generateContent = () => {
     const read = (selector, attributeName="", all=false) => {
         
         /* to make attribute parameter optional the user gives 
-        either nothing or bool if attrubte name not specified*/
+        either nothing (empty string) or bool if attribute name not specified*/
          
         if (typeof(attributeName) === "boolean") {
           all = attributeName;
@@ -108,25 +108,24 @@ const generateContent = () => {
           throw new Error("Element was not selected from the DOM");
         }
 
-        // when false and attribute is valid
+        // when all is false and attribute is valid
         if (!all && attributeName && el.getAttribute(attributeName)) {
           attributeValue = el.getAttribute(attributeName);      
           return attributeValue;
         } 
 
-        // when false and "not attribute" validate return attribute value if valid
+        /* when all is false and the attribute is undefined check if its a valid property */
         if (!all && !el.getAttribute(attributeName) &&
          el[attributeName]) {
           return typeof(el[attributeName]) === "object"
           ? attributeValidation(attributeName,attributeValue): el[attributeName];
         }
 
-        // validation for wrong attributes when false
+        // validation for wrong attribute and invalid property when all is false
         (!all && !el.getAttribute(attributeName)) && 
         attributeValidation(attributeName,attributeValue);
 
-        // checking if property or attribute
-
+        // checking if property or attribute when all is true
         if (all && (el[0].getAttribute(attributeName) || 
           el[0][attributeName])) {
 
@@ -143,11 +142,12 @@ const generateContent = () => {
           return _attributes;
         }
 
-        // validation for wrong attributes when true
+        // validation for wrong attributes when all is true
         (all && !el[0].getAttribute(attributeName)) && 
         attributeValidation(attributeName,attributeValue);
 
-        // returns the element when attribute not specified 
+        /* returns the element when attribute not specified or
+         valid attributes and properties given*/
         return el;
     }
 
