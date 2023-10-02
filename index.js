@@ -68,24 +68,6 @@ const generateContent = () => {
 
   const readContent = () => {
 
-    /*checks attribute or property is valid or not 
-    if property returns object invalid eg style... 
-    if returns string valid eg innerHTML*/
-
-    const attributeValidation = (attributeName,attributeValue) => {
-      if(attributeName !== "" && (!attributeValue || typeof(attributeValue) === "object")) {
-        console.error("Please check the attribute either you went wrong in the parameter or please add it in the specified HTML Element");
-        throw new Error("The attribute name mentioned is not qualified");
-      } 
-    }
-
-    /* checks if the property can be pushed or not,if valid (string) property push it else
-    property returning object(invalid) dont push throw error */
-    const arrayValidation = (attributeName,attributeValue) => {
-      return (typeof(attributeValue) === "object") ? 
-      attributeValidation(attributeName,attributeValue) : attributeValue;
-    }
-
     const read = (selector, attributeName="", all=false) => {
         
         /* to make attribute parameter optional the user gives 
@@ -99,8 +81,6 @@ const generateContent = () => {
         // conditional selection
         const el = (!all ? document.querySelector(selector) : 
         document.querySelectorAll(selector));
-
-        let attributeValue;
         
         // invalid selector
         if (!el || el.length === 0) {
@@ -109,45 +89,29 @@ const generateContent = () => {
         }
 
         // when all is false and attribute is valid
-        if (!all && attributeName && el.getAttribute(attributeName)) {
-          attributeValue = el.getAttribute(attributeName);      
-          return attributeValue;
-        } 
-
-        /* when all is false and the attribute is undefined check if its a valid property */
-        if (!all && !el.getAttribute(attributeName) &&
-         el[attributeName]) {
-          return typeof(el[attributeName]) === "object"
-          ? attributeValidation(attributeName,attributeValue): el[attributeName];
+        if (!all && el[attributeName]) {
+          return el[attributeName];
         }
 
-        // validation for wrong attribute and invalid property when all is false
-        (!all && !el.getAttribute(attributeName)) && 
-        attributeValidation(attributeName,attributeValue);
-
-        // checking if property or attribute when all is true
-        if (all && (el[0].getAttribute(attributeName) || 
-          el[0][attributeName])) {
+        // when all is true and attributeName is valid
+        if (all && el[0][attributeName]) {
 
           const _attributes = [];
 
-          /* push if "valid attribute" or "valid property"
-          if invalid throws an error to check attributes */
-
           el.forEach((element) => {
-              _attributes.push(element.getAttribute(attributeName) ||
-              arrayValidation(attributeName,element[attributeName]));
+              _attributes.push(element[attributeName]);
           })
 
           return _attributes;
         }
 
-        // validation for wrong attributes when all is true
-        (all && !el[0].getAttribute(attributeName)) && 
-        attributeValidation(attributeName,attributeValue);
+        // undefined attributes or invalid property
+        if (attributeName !== "" && !el[attributeName]) {
+          console.error("Please check the attribute either you went wrong in the parameter or please add it in the specified HTML Element");
+          throw new Error("The attribute name mentioned is not qualified");
+        }
 
-        /* returns the element when attribute not specified or
-         valid attributes and properties given*/
+        /* returns the element when attribute not specified */
         return el;
     }
 
