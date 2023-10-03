@@ -131,7 +131,34 @@ const readContent = () => {
 
   export { readContent };
   
-  const createStyleSheet = (() => {
+const deleteContent = () => {
+  
+  const deleteElement = (selector, all = false)=>{
+
+    const el = (!all ? document.querySelector(selector): document.querySelectorAll(selector))
+
+    if(!el || el.length === 0){
+      console.error("invalid selector")
+      throw new Error("invalid selector");
+    }     
+
+    if (!all) {
+      el.remove();
+    }
+
+    if (all) {
+      el.forEach((e) => {
+          e.remove();
+        })
+      }
+    };
+
+    return { deleteElement };
+};
+
+export { deleteContent }
+
+const createStyleSheet = (() => {
     const addStyle = (el, declaration) => {
       for (const val of Object.entries(declaration)) {
         const property = val[0];
