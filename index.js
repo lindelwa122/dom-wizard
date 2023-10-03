@@ -191,7 +191,13 @@ const createStyleSheet = (() => {
       }
     };
   
-    return { addStyle, createCSSRule, reRenderCSSRules };
+    const toggleStyles = (element, styles, oldStyles, toggleOn = true) => {
+      for (const property in styles) {
+        element.style[property] = toggleOn ? styles[property] : oldStyles[property]
+      }
+    }
+
+    return { addStyle, createCSSRule, reRenderCSSRules, toggleStyles };
   })();
   
   export { createStyleSheet };
