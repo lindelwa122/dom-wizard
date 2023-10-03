@@ -65,6 +65,71 @@ const generateContent = () => {
   };
   
   export default generateContent().addTreeToTheDOM;
+
+const readContent = () => {
+
+    const _error = () => {
+      console.error("Please check the attribute either you went wrong in the parameter or please add it in the specified HTML Element");
+      throw new Error("The attribute name mentioned is not qualified");
+    }
+  
+    const read = (selector, attributeName="", all=false) => {
+        
+        /* to make attribute parameter optional the user gives 
+        either nothing (empty string) or bool if attribute name not specified*/
+         
+        if (typeof(attributeName) === "boolean") {
+          all = attributeName;
+          attributeName = "";
+        }
+
+        // conditional selection
+        const el = (!all ? document.querySelector(selector) : 
+        document.querySelectorAll(selector));
+        
+        // invalid selector
+        if (!el || el.length === 0) {
+          console.error("Retrieving of the element was not possible. Please check your selector.");
+          throw new Error("Element was not selected from the DOM");
+        }
+
+        // when all is false and attribute is valid
+        if (!all && el[attributeName]) {
+          return el[attributeName];
+        }
+
+        // when all is true and attributeName is specified
+        if (all && attributeName !== "") {
+
+          //check if property or attribute is valid for each element selected 
+          el.forEach((element) => {
+            if(!element[attributeName]) {
+              _error();
+            }
+          })
+
+          const _attributes = [];
+
+          el.forEach((element) => {
+              _attributes.push(element[attributeName]);
+          })
+
+          return _attributes;
+        }
+
+        // undefined attributes or invalid property
+        if (attributeName !== "" && !el[attributeName]) {
+          _error();
+        }
+
+        /* returns the element(s) when attribute not specified */
+        return el;
+    }
+
+    return { read };
+  }
+
+  export { readContent };
   
   const createStyleSheet = (() => {
     const addStyle = (el, declaration) => {
