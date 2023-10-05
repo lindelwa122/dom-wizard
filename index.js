@@ -41,7 +41,7 @@ const generateContent = () => {
           el.appendChild(childEl);
         }
       }
-  
+
       if (tree.options && tree.options.router) {
         router.configRouter(
           Object.assign({}, tree.options.router, { element: el })
