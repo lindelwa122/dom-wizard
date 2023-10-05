@@ -1,5 +1,5 @@
 const domManager = () => {
-  const _createDOMTree = () => {
+  const _createDOMTree = (element) => {
     if (!element) {
       throw new Error('element is undefined.');
     }
