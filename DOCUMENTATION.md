@@ -1,3 +1,16 @@
+## getState Usage
+
+To get the state of the store, use the `getState()` function. For example, to get the state of the `key`, you would use the following code:
+
+```javascript
+const value = store.getState(key);
+
+// prints value of the key
+console.log(value);
+```
+
+Note: the function throws an error if the value doesn't exist.
+
 ## updateState Usage
 
 To update the state of the store, use the `updateState()` function. For example, to update the title property of the store to 'My New Title', you would use the following code:
@@ -45,8 +58,8 @@ import { readContent } from "./index.js";
 
 const domManager = readContent();
 
-// single element property value (innerHTML) returned 
-const data = domManager.read(".para","innerHTML");
+// single element property value (innerHTML) returned
+const data = domManager.read(".para", "innerHTML");
 
 console.log(data);
 ```
@@ -59,7 +72,7 @@ import { readContent } from "./index.js";
 const domManager = readContent();
 
 // multiple elements property values (innerHTML) returned in an array
-const data = domManager.read(".para","innerHTML",true);
+const data = domManager.read(".para", "innerHTML", true);
 
 console.log(data);
 ```
@@ -72,7 +85,7 @@ import { readContent } from "./index.js";
 const domManager = readContent();
 
 // the html DOM element itself is returned
-const data = domManager.read(".para",false);
+const data = domManager.read(".para", false);
 
 console.log(data);
 ```
@@ -83,7 +96,7 @@ import { readContent } from "./index.js";
 const domManager = readContent();
 
 // the html DOM elements itself is returned in an array
-const data = domManager.read(".para",true);
+const data = domManager.read(".para", true);
 
 console.log(data);
 ```
