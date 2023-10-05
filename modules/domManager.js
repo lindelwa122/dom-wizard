@@ -55,7 +55,22 @@ const domManager = () => {
   }
 
 
-  const create = (element, selector='#root') => {
+  const create = (element, selector='#root', append=false) => {
+    const el = _createDOMTree(element);
+    const parent = document.querySelector(selector);
+    if (!parent) {
+      throw Error(`Element ${selector} is not found. Please ensure ${selector} exists in your HTML.`);
+    }
     
+    if (!append) {
+      parent.innerHTML = '';
+    }
+
+    parent.appendChild(el);
+    return parent;
   }
+
+  return { create };
 }
+
+export default domManager();
