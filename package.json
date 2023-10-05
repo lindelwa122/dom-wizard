@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/lindelwa122/dom-manipulation-library/issues"
   },
-  "homepage": "https://github.com/lindelwa122/dom-manipulation-library#readme"
+  "homepage": "https://github.com/lindelwa122/dom-manipulation-library#readme",
+  "dependencies": {
+    "@dom-manipulation-library/create-project": "^1.0.3"
+  }
 }
