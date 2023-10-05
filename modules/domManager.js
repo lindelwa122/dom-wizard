@@ -25,7 +25,7 @@ const domManager = () => {
     }
 
     if (element.link) {
-      router.configureLink(lement.link);
+      router.configureLink(element.link);
     }
 
     if (element.attributes) {
