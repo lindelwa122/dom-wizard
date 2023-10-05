@@ -29,6 +29,29 @@ console.log(age); // prints 35
 
 Note: createStore() cannot be invoked or called more than once
 
+## getStore Usage
+
+To retrieve the store containing variables from anywhere in your application, use the `getStore()` function with no parameters needed. For example, to retrieve a store which you have created using `createStore()`, you would use the following code:
+
+```javascript
+
+/* retrieve the store */
+const store = getStore();
+
+/* to get the value of the property from the store*/
+console.log(store["age"]);
+
+/* to updateState of a property in the store*/
+store = store.updateState("age", 18);
+
+/* to get the value or state of a property in the store*/
+const age = store.getState("age");
+
+console.log(age); // prints 18
+```
+
+Note: A store must always be created using `createStore()` to use this functionality 
+
 ## updateState Usage
 
 To update the state of the store, use the `updateState()` function. For example, to update the title property of the store to 'My New Title', you would use the following code:
