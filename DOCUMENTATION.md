@@ -1,3 +1,34 @@
+## createStore Usage
+
+To create the store, use the `createStore()` function. For example, to create a store and add all the variables which you want to access anywhere from the application, you would use the following code:
+
+```javascript
+
+const storeObject = {
+    name: "John Doe",
+    age: 35,
+    univerity: "Stanford",
+    isGraduated: false
+}
+
+// stores the object in "store"
+const store = createStore(storeObject);
+
+// returns {the object, getState function, updateState function}
+
+// prints "John Doe"
+console.log(store.name)
+
+// updateState changes the state and returns "updated store"
+store = store.updateState("name","John Smith");
+
+const age = store.getState("age");
+
+console.log(age); // prints 35
+```
+
+Note: createStore() cannot be invoked or called more than once
+
 ## updateState Usage
 
 To update the state of the store, use the `updateState()` function. For example, to update the title property of the store to 'My New Title', you would use the following code:
