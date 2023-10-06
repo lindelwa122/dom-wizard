@@ -22,8 +22,17 @@ function updateState(key, newValue) {
     if (newValue === undefined || newValue === null) {
       throw new Error('New value must be defined.');
     }
-  
+
     this[key] = newValue;
+
+    /* Update the state of localStorage */
+    const data = JSON.parse(localStorage.getItem("store"));
+
+    data[key] = newValue;
+
+    localStorage.setItem("store",JSON.stringify(data));
   
     return this;
   }
+
+export default updateState;

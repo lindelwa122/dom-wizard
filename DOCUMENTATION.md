@@ -1,3 +1,24 @@
+## createStore Usage
+
+To create the store, use the `createStore()` function. For example, to create a store and add all the variables which you want to access anywhere from the application, you would use the following code:
+
+```javascript
+
+const storeObject = {
+    name: "John Doe",
+    age: 35,
+    univerity: "Stanford",
+    isGraduated: false
+}
+
+// creates a "store" and stores the object
+createStore(storeObject);
+
+// to retrieve the "store object" use getStore()
+```
+
+Note: `createStore()` cannot be invoked or called more than once even in different script files of the same application.
+
 ## getState Usage
 
 To get the state of the store, use the `getState()` function. For example, to get the state of the `key`, you would use the following code:
