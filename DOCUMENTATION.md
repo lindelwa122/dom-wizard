@@ -11,23 +11,26 @@ const storeObject = {
     isGraduated: false
 }
 
-// stores the object in "store"
-const store = createStore(storeObject);
+// creates a "store" and stores the object
+createStore(storeObject);
 
-// returns {the object, getState function, updateState function}
-
-// prints "John Doe"
-console.log(store.name)
-
-// updateState changes the state and returns "updated store"
-store = store.updateState("name","John Smith");
-
-const age = store.getState("age");
-
-console.log(age); // prints 35
+// to retrieve the "store object" use getStore()
 ```
 
-Note: createStore() cannot be invoked or called more than once
+Note: `createStore()` cannot be invoked or called more than once even in different script files of the same application.
+
+## getState Usage
+
+To get the state of the store, use the `getState()` function. For example, to get the state of the `key`, you would use the following code:
+
+```javascript
+const value = store.getState(key);
+
+// prints value of the key
+console.log(value);
+```
+
+Note: the function throws an error if the value doesn't exist.
 
 ## updateState Usage
 
@@ -76,8 +79,8 @@ import { readContent } from "./index.js";
 
 const domManager = readContent();
 
-// single element property value (innerHTML) returned 
-const data = domManager.read(".para","innerHTML");
+// single element property value (innerHTML) returned
+const data = domManager.read(".para", "innerHTML");
 
 console.log(data);
 ```
@@ -90,7 +93,7 @@ import { readContent } from "./index.js";
 const domManager = readContent();
 
 // multiple elements property values (innerHTML) returned in an array
-const data = domManager.read(".para","innerHTML",true);
+const data = domManager.read(".para", "innerHTML", true);
 
 console.log(data);
 ```
@@ -103,7 +106,7 @@ import { readContent } from "./index.js";
 const domManager = readContent();
 
 // the html DOM element itself is returned
-const data = domManager.read(".para",false);
+const data = domManager.read(".para", false);
 
 console.log(data);
 ```
@@ -114,7 +117,7 @@ import { readContent } from "./index.js";
 const domManager = readContent();
 
 // the html DOM elements itself is returned in an array
-const data = domManager.read(".para",true);
+const data = domManager.read(".para", true);
 
 console.log(data);
 ```
