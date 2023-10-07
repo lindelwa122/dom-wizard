@@ -19,6 +19,31 @@ createStore(storeObject);
 
 Note: `createStore()` cannot be invoked or called more than once even in different script files of the same application.
 
+## getStore Usage
+
+To retrieve the store, use the `getStore()` function with no parameters needed. For example, to retrieve a store and access functionalities like `updateState()` and `getState()` anywhere from the application, you would use the following code:
+
+```javascript
+
+const store = getStore(); // retrieve store
+
+const title = store.getState("title"); // get the state of store
+
+console.log(title); // prints the title
+
+// updates the state of the store
+const newStore = store.updateState("title", "javascript"); 
+
+console.log(newStore); // prints the object returned by updateState
+
+console.log(store); // store is updated with new title
+
+```
+
+Note: `getStore()` retrieves the store and functionalities like `updateState()` and `getState()` can be used on the store object.
+
+Warning: `getStore()` is the only way to access the store.
+
 ## getState Usage
 
 To get the state of the store, use the `getState()` function. For example, to get the state of the `key`, you would use the following code:
