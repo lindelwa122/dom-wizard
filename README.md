@@ -149,10 +149,10 @@ for (account of accounts) {
 
 The same thing can be done with ease using the 4 functions that **domManager** will have:
 
-- [ ] **create**
+- [x] **create**
 - [ ] **update**
-- [ ] **read**
-- [ ] **delete**
+- [x] **read**
+- [x] **delete**
 
 The functions will perform precisely as their names suggest, offering functionality to create, update, delete, and read elements. Click [here](https://github.com/lindelwa122/dom-manipulation-library/issues) to read more about how they should operate.
 
