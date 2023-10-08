@@ -92,7 +92,42 @@ const domManager = () => {
     return parent;
   };
 
-  return { create };
+  /**
+   * Retrieves information from the DOM based on the provided selector and property name.
+   *
+   * @param {string} selector - The CSS selector to query the DOM.
+   * @param {string} propertyName - The property name to retrieve from the selected element(s).
+   * @param {boolean} all- If true, retrieves the property from all matching elements; otherwise, retrieves from the first matching element.
+   *
+   * @throws Throws an error if retrieving the element was not possible or if the selector didn't match any elements.
+   *
+   * @returns {Array|string|undefined} If all is true and propertyName is provided, an array of property values from all matching elements; if propertyName is provided, the property value from the first matching element; otherwise, the DOM element(s) matching the selector.
+   */
+  const read = (selector, propertyName = undefined, all = false) => {
+    const el = !all
+      ? document.querySelector(selector)
+      : document.querySelectorAll(selector);
+
+    if (!el || el.length === 0) {
+      throw new Error(
+        'Retrieving of the element was not possible. Please check your selector.',
+      );
+    }
+
+    if (all && propertyName) {
+      const props = [];
+      el.forEach((element) => {
+        props.push(element[propertyName]);
+      });
+      return props;
+    } else if (propertyName) {
+      return el[propertyName];
+    } else {
+      return el;
+    }
+  };
+
+  return { create, read };
 };
 
 export default domManager();
