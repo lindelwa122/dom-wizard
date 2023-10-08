@@ -9,6 +9,7 @@
     "sourceType": "module"
   },
   "rules": {
-    "quotes": ["error", "single"]
+    "quotes": ["error", "single"],
+    "requireReturn": false
   }
 }
