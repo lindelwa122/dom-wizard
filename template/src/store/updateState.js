@@ -27,3 +27,5 @@ function updateState(key, newValue) {
 
   return this;
 }
+
+export default updateState;
