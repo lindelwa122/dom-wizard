@@ -1,3 +1,7 @@
+import domManager from './modules/domManager';
+
+export { domManager };
+
 const generateContent = () => {
   const _createElement = (tagName, options = {}) => {
     const el = document.createElement(tagName);
