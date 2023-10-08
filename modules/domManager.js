@@ -8,29 +8,15 @@ const domManager = () => {
 
     const el = document.createElement(element.tagName);
 
-    if (!el) {
-      throw new Error(`The specified tagName (${element.tagName}) is not recognised. Ensure this value is valid for your elements to be created correctly.`);
-    }
-
     if (!element.options) return el;
-
-    if (element.options.className) el.className = className;
-
-    if (element.options.classList) {
-      el.classList = options.classList.join(" ");
-    }
-
-    if (element.id) {
-      el.id = id;
-    }
 
     if (element.link) {
       router.configureLink(element.link);
     }
 
-    if (element.attributes) {
-      for (const [prop, value] of Object.entries(element.attributes)) {
-        el[prop] = value;
+    if (element.options) {
+      for (const [prop, value] of Object.entries(element.options)) {
+        el[prop] = prop === 'classList' ? value.join(' ') : value;
       }
     }
 
