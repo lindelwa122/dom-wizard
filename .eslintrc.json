@@ -9,6 +9,6 @@
     "sourceType": "module"
   },
   "rules": {
-    "singleQuotes": true
+    "quotes": ["error", "single"]
   }
 }

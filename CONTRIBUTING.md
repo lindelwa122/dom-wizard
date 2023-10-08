@@ -1,10 +1,10 @@
-# Contributing Rules 
+# Contributing Rules
 
 1. We have adopted the [Contributor Covenant](https://www.contributor-covenant.org/) as our Code of Conduct, and we expect project participants to adhere to it. Please read the [full text](/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
 
-2. Any kind of contribution is welcome and appreciated but small contributions like fixing grammatical errors, punctuations, and typos won't count for Hacktoberfest. 
+2. Any kind of contribution is welcome and appreciated but small contributions like fixing grammatical errors, punctuations, and typos won't count for Hacktoberfest.
 
-3. If you find a bug, open an issue.  Before filing a new issue, try to make sure your problem doesn’t already exist.
+3. If you find a bug, open an issue. Before filing a new issue, try to make sure your problem doesn’t already exist.
 
 4. A bug fix should maintain the existing function's behavior, ensuring it remains backward compatible and does not break any code relying on it.
 
