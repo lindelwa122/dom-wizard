@@ -127,7 +127,37 @@ const domManager = () => {
     }
   };
 
-  return { create, read };
+  /**
+   * Removes elements from the DOM based on the provided selector.
+   *
+   * @param {string} selector - The CSS selector to target elements for removal.
+   * @param {boolean} all - If true, removes all matching elements; otherwise, removes the first matching element.
+   *
+   * @throws Throws an error if the selector doesn't match any elements or if removal fails.
+   *
+   * @returns {Array|HTMLElement} If all is true, an array of removed elements; otherwise, the removed element.
+   */
+  const remove = (selector, all) => {
+    const el = !all
+      ? document.querySelector(selector)
+      : document.querySelectorAll(selector);
+
+    if (!el || el.length === 0) {
+      throw new Error(
+        `${selector} is not found in the DOM. Ensure the spelling is correct.`,
+      );
+    }
+
+    if (all) {
+      el.forEach((x) => x.remove());
+    } else {
+      el.remove();
+    }
+
+    return el;
+  };
+
+  return { create, read, remove };
 };
 
 export default domManager();

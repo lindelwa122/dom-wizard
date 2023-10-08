@@ -287,3 +287,53 @@ The `read` function retrieves information from the DOM based on the provided sel
 - Collecting values from a group of form elements (e.g., all input fields within a specific container).
 
 The `read` function provides flexibility in querying the DOM and fetching relevant information based on specified criteria, making it a powerful tool for data extraction in various scenarios.
+
+### `remove()`
+
+The `remove` function removes elements from the DOM based on the provided selector.
+
+#### Parameters:
+
+- **selector** (`string`): The CSS selector to target elements for removal.
+
+- **all** (`boolean`) [Optional]: If `true`, removes all matching elements; otherwise, removes the first matching element. Defaults to `false`.
+
+#### Throws:
+
+- Throws an error if the selector doesn't match any elements or if removal fails.
+
+#### Returns:
+
+- If `all` is `true`, an array of removed elements; otherwise, the removed element.
+
+#### How it Works:
+
+The `remove` function uses the provided selector to query the DOM for elements. If `all` is `true`, it uses `querySelectorAll` to retrieve all matching elements; otherwise, it uses `querySelector` to retrieve the first matching element. It then removes the selected element(s) from the DOM.
+
+#### Use Cases:
+
+- Removing specific UI components based on their identifiers or classes.
+
+- Clearing out temporary or dynamically created elements.
+
+- Implementing a feature to remove multiple items at once (e.g., in a list).
+
+#### Usage and Examples:
+
+1. **Remove a Single Element:**
+
+   ```javascript
+   domManager.remove('.example-element');
+   // Removes the first element matching the selector '.example-element'
+   ```
+
+2. **Remove All Elements Matching the Selector:**
+
+   ```javascript
+   domManager.remove('.example-elements', true);
+   // Removes all elements matching the selector '.example-elements'
+   ```
+
+#### Why is it Useful?
+
+The `remove` function provides a straightforward way to remove elements from the DOM based on specified criteria. This is essential for keeping the DOM updated and tidy, especially in complex web applications where elements might need to be dynamically added or removed based on user interactions or other events. The ability to remove specific elements or a group of elements enhances the flexibility and user experience of web applications, making the `remove` function a valuable utility for managing the DOM effectively.
