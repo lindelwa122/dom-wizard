@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-const fs = require("fs");
-const { execSync, exec } = require("child_process");
+const fs = require('fs');
+const { execSync, exec } = require('child_process');
 
 function runCommand(command) {
   try {
-    execSync(command, { stdio: "inherit"});
+    execSync(command, { stdio: 'inherit' });
   } catch (error) {
     console.error(`Failed to execute ${command}`, e);
     return false;
@@ -13,7 +13,6 @@ function runCommand(command) {
 
   return true;
 }
-
 
 const projectName = process.argv[2];
 const CURR_DIR = process.cwd();
@@ -30,20 +29,20 @@ function createDirectoryContents(templatePath, newProjectPath) {
     const stats = fs.statSync(origFilePath);
 
     if (stats.isFile()) {
-      const contents = fs.readFileSync(origFilePath, "utf8");
+      const contents = fs.readFileSync(origFilePath, 'utf8');
 
       // Rename
-      if (file === ".npmignore") file = ".gitignore";
+      if (file === '.npmignore') file = '.gitignore';
 
       const writePath = `${newProjectPath}/${file}`;
-      fs.writeFileSync(writePath, contents, "utf8");
+      fs.writeFileSync(writePath, contents, 'utf8');
     } else if (stats.isDirectory()) {
       fs.mkdirSync(`${newProjectPath}/${file}`);
 
       // recursive call
       createDirectoryContents(
         `${templatePath}/${file}`,
-        `${newProjectPath}/${file}`
+        `${newProjectPath}/${file}`,
       );
     }
   });
@@ -51,13 +50,16 @@ function createDirectoryContents(templatePath, newProjectPath) {
 
 try {
   fs.mkdirSync(`${CURR_DIR}/${projectName}`);
-} catch(error) {
+} catch (error) {
   // console.log(error);
   console.log(`A directory with the name '${projectName}' already exists.`);
   process.exit();
 }
 
-createDirectoryContents(`${__dirname}/../template`, `${CURR_DIR}/${projectName}`);
+createDirectoryContents(
+  `${__dirname}/../template`,
+  `${CURR_DIR}/${projectName}`,
+);
 
 console.log(`
   Installing dependencies...

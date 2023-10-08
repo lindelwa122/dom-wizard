@@ -11,28 +11,21 @@
  */
 
 function updateState(key, newValue) {
-    if (!key || typeof key !== 'string') {
-      throw new Error(`Key  ${key} must be a string.`);
-    }
-  
-    if (!this.hasOwnProperty(key)) {
-      throw new Error(`Key ${key} does not exist.`);
-    }
-  
-    if (newValue === undefined || newValue === null) {
-      throw new Error('New value must be defined.');
-    }
-
-    this[key] = newValue;
-
-    /* Update the state of localStorage */
-    const data = JSON.parse(localStorage.getItem("store"));
-
-    data[key] = newValue;
-
-    localStorage.setItem("store",JSON.stringify(data));
-  
-    return this;
+  if (!key || typeof key !== 'string') {
+    throw new Error(`Key  ${key} must be a string.`);
   }
+
+  if (!this.hasOwnProperty(key)) {
+    throw new Error(`Key ${key} does not exist.`);
+  }
+
+  if (newValue === undefined || newValue === null) {
+    throw new Error('New value must be defined.');
+  }
+
+  this[key] = newValue;
+
+  return this;
+}
 
 export default updateState;
