@@ -1,6 +1,6 @@
 {
-  "name": "@dom-manipulation-library/create-project",
-  "version": "1.0.3",
+  "name": "@dom-manipulation-library/dml",
+  "version": "1.1.0",
   "description": "JavaScript library that makes DOM manipulation easy and more managable.",
   "main": "index.js",
   "bin": "./bin/cli.js",
