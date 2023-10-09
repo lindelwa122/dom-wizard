@@ -265,7 +265,7 @@ The `store` feature allows you to store and manage variables that are accessible
 
 Learn more about the `store` feature in the [store documentation](https://github.com/lindelwa122/dom-manipulation-library/issues).
 
-**NOTE:** Unchecked boxes indicate that the feature is not yet completed, while checked boxes indicate completed features. You are welcome to contribute to and improve existing features or propose new ones through issues. For more details, refer to our [contributing guidelines](/CONTRIBUTING.md).
+> ℹ️ **NOTE:** Unchecked boxes indicate that the feature is not yet completed, while checked boxes indicate completed features. You are welcome to contribute to and improve existing features or propose new ones through issues. For more details, refer to our [contributing guidelines](/CONTRIBUTING.md).
 
 ## More Ways to Contribute<a name="more-ways-to-contribute"></a>
 
