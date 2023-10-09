@@ -289,5 +289,7 @@ The DOM Manipulation Library is distributed under the MIT License
 ## Contact<a name="contact"></a>
 
 Lindelwa - nqabenhlemlaba22@gmail.com
+
 Instagram - [https://www.instagram.com/q.codes\_\_](https://www.instagram.com/q.codes__)
+
 GitHub - https://github.com/lindelwa122
