@@ -68,6 +68,29 @@ To retrieve a property from the store, simply access the property on the store o
 const title = store.title;
 ```
 
+## Register function Usage
+
+The `register()` function is used to register routes in the registry. The `register()` function accepts an array of objects containing information about a route.
+
+```javascript
+
+const routes = [
+  { id: "home", route: home },
+  { id: "about", route: about },
+  { id: "contact", route: contact }
+]
+
+router.register(routes); 
+
+// register() can be called or invoked only once
+
+```
+
+**NOTE**
+
+`id` and `route` are required parameters where the `id` has to be **unique** and `route` must be an **object**.
+
+`register()` cannot be invoked more than once.
 
 
 ## AddStyle function Usage

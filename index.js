@@ -234,9 +234,48 @@ const router = (() => {
   };
 
   const register = (routes) => {
+
+    const _idSet = new Set();
+
+    /* Invoke only once */
+    window.onbeforeunload = () => {
+      localStorage.setItem("route_flag", JSON.stringify(true));
+    }
+
+    /* checking id uniqueness using set*/
     for (const route of routes) {
+      if(_idSet.has(route.id)) {
+        console.error(`Id ${route.id} is not unique`);
+        throw new Error("Unique Id must be assigned");
+      }
+      else {
+        _idSet.add(route.id);
+      }
+    }
+    
+    /* Error invoking for more than once */
+    if (!JSON.parse(localStorage.getItem("route_flag"))) {
+      console.error("Invalid to register routes more than once");
+      throw new Error("Cannot invoke register() more than once")
+    }
+
+    /* id is unique */
+    for (const route of routes) {
+
+      if (!route.id || !route.route) {
+        console.error("Please enter valid id and route");
+        throw new Error("Please make sure that a valid id and route is passed");
+      }
+
+      if (typeof(route.route) !== "object") {
+        console.error(`${route.route} is not an object`);
+        throw new Error("Object is the valid parameter");
+      }
+
       pages.push(route);
     }
+
+    localStorage.setItem("route_flag", JSON.stringify(false));
   };
 
   return { configRouter, register, pages };
