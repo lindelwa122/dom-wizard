@@ -212,8 +212,8 @@ const router = (() => {
     info.element.addEventListener('click', () => {
       _deactive(info.name);
       console.log({ ele: info.element });
-      info.element.classList.add('active');
-
+      _activate(info.element);
+      
       let to;
       for (const page of pages) {
         if (page.id === info.to) {
@@ -231,6 +231,10 @@ const router = (() => {
         router.element.classList.remove('active');
       }
     }
+  };
+
+  const _activate = (ele) => {
+    ele.classList.add('active');
   };
 
   const register = (routes) => {
