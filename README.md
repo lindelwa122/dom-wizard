@@ -263,10 +263,7 @@ You can contribute not only by writing code but also by assisting us in enhancin
 - [ ] Design a logo for us.
 - [ ] Report bugs.
 - [ ] Suggest any additional elements you believe should be included.
-- [ ] Translate the documentation and error messages into different languages, making the library more accessible to non-English speakers.
-- [ ] Improve Performance of the library
-- [ ] Improve Error Messages: Enhance error messages to make them more user-friendly.
-- [ ] Create Infographics: Design visually appealing infographics that explain the library's features, use cases, or any other relevant information.
+
 
 ## License
 
