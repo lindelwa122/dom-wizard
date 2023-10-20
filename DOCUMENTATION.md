@@ -114,6 +114,39 @@ To add the `font-size: 16px` style to all of the `.my-elements` elements, you wo
 addStyle(document.querySelectorAll('.my-elements'), { fontSize: '16px' });
 ```
 
+## Router.configureLink
+
+Confiugures a `link` with the given linkInfo object.
+
+### Parameters:
+
+`linkInfo`: An object with the following properties:
+
+    name: The name of the link.
+
+    to: The ID of the page to link to.
+
+    element: The HTML element to attach the click event listener to.
+
+### Throws:
+
+`Error`: Invalid linkInfo object if name, to, or element is missing.
+
+`Error`: Invalid page ID if the page with the given ID does not exist.
+
+### Example:
+
+```JavaScript
+const linkInfo = {
+  name: 'home-link',
+  to: 'home',
+  element: document.querySelector('#home-link'),
+};
+
+configureLink(linkInfo);
+
+linkInfo.element.click(); // Navigates to the home page.
+```
 
 ## DOM-delete() feature usage
 
