@@ -1,12 +1,42 @@
-# DOM Manipulation Library
+# DOM Manipulation Library Documentation
 
-A JavaScript library that allows easy manipulation of the DOM.
+[![npm version](https://badge.fury.io/js/@dom-manipulation-library%2Fdml.svg)](https://badge.fury.io/js/@dom-manipulation-library%2Fdml)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Click [here](#features) to read more about the features.
+Welcome to the documentation for the DOM Manipulation Library, a JavaScript library that simplifies the manipulation of the Document Object Model (DOM) in web applications.
 
-## Examples
+## Table of Contents
 
-Here's how you can create an element and append it to the DOM:
+1. [Introduction](#introduction)
+2. [Getting Started](#getting-started)
+3. [Examples](#examples)
+4. [Contributing](#contributing)
+5. [Features](#features)
+   - [domManager](#dommanager)
+   - [Router](#router)
+   - [createStyleSheet](#createstylesheet)
+   - [store](#store)
+6. [More Ways to Contribute](#more-ways-to-contribute)
+7. [License](#license)
+8. [Contact](#contact)
+
+## Introduction<a name="introduction"></a>
+
+The DOM Manipulation Library is designed to simplify the process of creating, updating, modifying, and deleting DOM elements in your web applications. It provides a set of functions and features to streamline DOM manipulation tasks, making it easier and more efficient for developers to work with the DOM.
+
+## Getting Started<a name="getting-started"></a>
+
+To get started with the DOM Manipulation Library, you can install it using npm or yarn:
+
+```bash
+npm install @dom-manipulation-library/dml
+```
+
+Once installed, you can import the library into your JavaScript files and start using its features.
+
+## Examples<a name="examples"></a>
+
+Here's an example of how you can create an element and append it to the DOM using the library:
 
 ```javascript
 import domManager from '@dom-manipulation-library/dml';
@@ -39,78 +69,72 @@ const sidebar = () => {
 domManager.create(sidebar());
 ```
 
-This allows you to easily create elements and their children using simple objects.
+This example demonstrates how to create elements and their children using simple objects, making DOM manipulation easier and more structured.
 
-To read more about the features, jump to the [features section](#features).
+## Contributing<a name="contributing"></a>
 
-## Contributing
+We welcome contributions from the open-source community. Whether you want to suggest improvements, fix bugs, or add new features, your contributions are greatly appreciated. Here's how you can contribute:
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+1. **Fork the Repository:** Start by forking the [DOM Manipulation Library repository](https://github.com/lindelwa122/dom-manipulation-library).
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
+2. **Clone the Repository:** Clone your forked repository to your local machine using Git:
 
-1. [Fork](https://github.com/lindelwa122/dom-manipulation-library/fork) this repository.
+- HTTPS
 
-2. Clone the repository to your own machine by running one of the following commands:
+     ```bash
+     git clone https://github.com/<your-username>/dom-manipulation-library.git
+     ```
 
-   - HTTPS
+     OR
 
-   ```
-   git clone https://github.com/<your-username>/dom-manipulation-library.git
-   ```
+- SSH
+  
+     ```bash
+     git clone git@github.com:<your-username>/dom-manipulation-library.git
+     ```
+  
+     OR
 
-   OR
+- Github CLI:
+  
+     ```bash
+     gh repo clone <your-username>/dom-manipulation-library
+     ```
 
-   - SSH
+3. **Create a New Branch:** Create a new branch with a name that reflects the change you're making:
 
-   ```
-   git clone git@github.com:<your-username>/dom-manipulation-library.git
-   ```
-
-   OR
-
-   - Github CLI:
-
-   ```
-   gh repo clone <your-username>/dom-manipulation-library
-   ```
-
-3. Create a new branch. The name of the branch must reflect the change you are about to make.
-
-   ```
+   ```bash
    git checkout -b <branch-name>
    ```
 
-4. Make your changes or add your new feature. Remember to commit early and commit often. Read our commit rules [here](/COMMIT_RULES.md).
+4. **Make Your Changes:** Make your desired changes or add new features. Remember to follow the [commit guidelines](/COMMIT_RULES.md) for clear and concise commit messages.
 
-   - Short commit messages:
-     ```
+  - Short commit messages:
+     ```bash
      git add <changed-files>
      git commit -m "<commit-message>"
      ```
-   - Long commit messages:
-     ```
+  - Long commit messages:
+     ```bash
      git add <changed-files>
      git commit
      ```
 
-5. Push your changes to Github by running this command:
+5. **Push Your Changes:** Push your changes to your forked repository on GitHub:
 
-   ```
+   ```bash
    git push origin <branch-name>
    ```
 
-6. Go over to GitHub and create a pull request. Make sure to include a comment explaining the additions. Please include the issue number being addressed in your comment. For instance, if you were resolving issue 6, add `Issue: #6` at the end of your comment. For more information, please refer to our contributing rules [here](/CONTRIBUTING.md).
+6. **Create a Pull Request:** Go to the original repository on GitHub and create a pull request. Be sure to include a detailed description of your changes and reference any related issues. For example, if you're addressing issue #6, add `Issue: #6` to your pull request comment. Review our [contributing guidelines](/CONTRIBUTING.md) for more information.
 
-## Features
+## Features<a name="features"></a>
 
-These are the features the library will have; most of the following haven't been built yet, and we need your assistance. To learn more about each feature, click on the subtitle. Additionally, you can indicate on the Issues tab that you are working on a specific feature, although this is not mandatory. Click [here](/CONTRIBUTING.md) to read more about our contributing rules.
+The DOM Manipulation Library offers various features to simplify DOM manipulation in your web applications. Here's an overview of the features and their current status:
 
-### domManager
+### domManager<a name="dommanager"></a>
 
-The main idea behind the library was to create a tool that enables developers to easily create, update, modify, and delete DOM elements. The primary function of **domManager** is precisely to accomplish this task.
-
-I wrote the code below a few months ago and it is to demonstrate how hard and error-prone it can be to manually append and modify elements to the DOM.
+The `domManager` is the core of the library, providing functions for creating, updating, reading, and deleting DOM elements. These functions make it easy to work with the DOM and manage elements efficiently.
 
 ```javascript
 for (account of accounts) {
@@ -147,20 +171,16 @@ for (account of accounts) {
 }
 ```
 
-The same thing can be done with ease using the 4 functions that **domManager** will have:
+- [x] **create**: Create DOM elements and append them to the document.
+- [ ] **update**: Update existing DOM elements.
+- [x] **read**: Read information from DOM elements.
+- [x] **delete**: Delete DOM elements from the document.
 
-- [x] **create**
-- [ ] **update**
-- [x] **read**
-- [x] **delete**
+For more details on how to use these functions, refer to the [domManager documentation](https://github.com/lindelwa122/dom-manipulation-library/issues).
 
-The functions will perform precisely as their names suggest, offering functionality to create, update, delete, and read elements. Click [here](https://github.com/lindelwa122/dom-manipulation-library/issues) to read more about how they should operate.
+### Router<a name="router"></a>
 
-### Router
-
-**Router** will enable developers to navigate to different routes of the site without the page reloading.
-
-Here's an example showcasing how easy it could be to utilize this feature in your app.
+The `Router` feature enables navigation between different routes in your web application without the need for page reloading. You can define routes and easily switch between them.
 
 **_router.js_**
 
@@ -202,20 +222,16 @@ domManager.create(initialPage);
 router.register(routes);
 ```
 
-Above, we create an initial page with nothing but a button that displays `Click Me - About`. If you click this button, you will be directed to the about page. The `route` in the options expects an ID of a specific route.
+- [ ] **register**: Register routes for your application.
+- [ ] **configureLink**: Helper function for setting up route links.
+- [ ] **activate**: Private function to add the 'active' class to clicked elements.
+- [ ] **deactivate**: Private function to remove the 'active' class from elements.
 
-Let's delve into the functions that will make this magic happen:
+Learn more about how to implement routing in your application by visiting the [Router documentation](https://github.com/lindelwa122/dom-manipulation-library/issues).
 
-- [ ] **register**: This function will register all the routes as it did on the above example.
-- [ ] **configureLink**: This a helper function that **domManager** will invoke when it finds `route` in `options`.
-- [ ] **activate**: This is a private function that is supposed to add a className of `active` to the clicked element.
-- [ ] **deactivate**: A private function that removes the className of `active`.
+### createStyleSheet<a name="createstylesheet"></a>
 
-To gain a better understand of the above functions click [here](https://github.com/lindelwa122/dom-manipulation-library/issues).
-
-### createStyleSheet
-
-Here's how you can use **createStyleSheet** to style content of your page:
+With `createStyleSheet`, you can style the content of your web page dynamically by creating and managing CSS rules.
 
 ```javascript
 import { createStyleSheet } from '@dom-manipulation-library/dml';
@@ -232,43 +248,45 @@ createStyleSheet.createCSSRule({
 });
 ```
 
-- [ ] **createCSSRule**: Takes in an object with selectors and declarations and styles the elements.
-- [ ] **createMediaQueryRule**
-- [ ] **configStateRule**: Adds a style to an element depending on its state.
-- [ ] **createStyle**: Adds a style to an element.
+- [ ] **createCSSRule**: Create CSS rules for specific selectors and declarations.
+- [ ] **createMediaQueryRule**: Define CSS rules for media queries.
+- [ ] **configStateRule**: Add styles to elements based on their state.
+- [ ] **createStyle**: Apply styles to elements.
 
-To gain a better understanding of how these functions should work click [here](https://github.com/lindelwa122/dom-manipulation-library/issues).
+Explore how to use these styling features in the [createStyleSheet documentation](https://github.com/lindelwa122/dom-manipulation-library/issues).
 
-### store
+### store<a name="store"></a>
 
-The store will hold variables that are intended to be accessible throughout the app. Users will be able to retrieve and modify these variables from anywhere within the app.
+The `store` feature allows you to store and manage variables that are accessible throughout your application. You can retrieve and update these variables from any part of your app.
 
-- [ ] **createStore**: creates all the variables in their initial state.
-- [ ] **getState**: gets the state of a variable.
-- [ ] **updateState**: modifies state.
+- [ ] **createStore**: Create variables with initial states.
+- [ ] **getState**: Get the current state of a variable.
+- [ ] **updateState**: Modify the state of variables.
 
-Read more about how store should work [here](https://github.com/lindelwa122/dom-manipulation-library/issues).
+Learn more about the `store` feature in the [store documentation](https://github.com/lindelwa122/dom-manipulation-library/issues).
 
-**NOTE:** _An unchecked box indicates that the feature is not yet completed, while a checked box indicates its completion. You are welcome to work on and improve completed features. Additionally, feel free to propose new features via issues. For more details, please refer to our contributing rules [here](/CONTRIBUTING.md)._
+> ℹ️ **NOTE:** Unchecked boxes indicate that the feature is not yet completed, while checked boxes indicate completed features. You are welcome to contribute to and improve existing features or propose new ones through issues. For more details, refer to our [contributing guidelines](/CONTRIBUTING.md).
 
-## More ways to contribute
+## More Ways to Contribute<a name="more-ways-to-contribute"></a>
 
-You can contribute not only by writing code but also by assisting us in enhancing this README, drafting documentation, creating tutorials, and more.
+You can contribute to the DOM Manipulation Library in various ways beyond code contributions:
 
 - [ ] Enhance this README.
-- [ ] Draft the documentation.
-- [ ] Create a tutorial on our website.
+- [ ] Draft documentation.
+- [ ] Create tutorials for users.
 - [ ] Produce video tutorials.
-- [ ] Write tests.
-- [ ] Design a logo for us.
-- [ ] Report bugs.
-- [ ] Suggest any additional elements you believe should be included.
+- [ ] Write tests to ensure code quality.
+- [ ] Design a logo for the project.
+- [ ] Report and help fix bugs.
+- [ ] Suggest additional features or improvements.
 
-## License
+Your contributions in any form are valuable and help make this library better for everyone.
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+## License<a name="license"></a>
 
-## Contact
+The DOM Manipulation Library is distributed under the MIT License
+
+## Contact<a name="contact"></a>
 
 Lindelwa - nqabenhlemlaba22@gmail.com
 
