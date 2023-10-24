@@ -10,6 +10,9 @@ const cssManager = () => {
    * Adds a CSS rule to the stylesheet.
    *
    * @param {Object} rule - An object with a selector as its key and a declaration as its value.
+   *
+   * @throws an error if rule is not an Object with key and value pairs
+   *
    * @returns {number} The index of the added rule, which can be used to remove the rule.
    *
    * @example
@@ -18,6 +21,12 @@ const cssManager = () => {
    * cssManager.removeRule(ruleIndex);
    */
   const addRule = (rule) => {
+    if (!(rule !== null && typeof rule === 'object' && !Array.isArray(rule))) {
+      throw new Error(
+        'rule must be of type object with key and value pairs for the styles to be applied correctly',
+      );
+    }
+
     const stylesheet = document.querySelector('#dml-style').sheet;
     const [selector, declaration] = Object.entries(rule)[0];
     return stylesheet.insertRule(
@@ -31,11 +40,19 @@ const cssManager = () => {
    *
    * @param {number} index - The index of the rule to be removed.
    *
+   * @throws an error if index is not a number
+   *
    * @example
    * // Remove a CSS rule by its index
    * cssManager.removeRule(ruleIndex);
    */
   const removeRule = (index) => {
+    if (typeof index !== 'number') {
+      throw new Error(
+        `index should be a number for a rule to be removed correctly. Currently index is of type of ${typeof index}`,
+      );
+    }
+
     const stylesheet = document.querySelector('#dml-style').sheet;
     stylesheet.deleteRule(index);
   };
@@ -45,6 +62,9 @@ const cssManager = () => {
    *
    * @param {Array<Object>} rules - An array containing CSS rules, where each rule is an object
    * with a selector as its key and a declaration as its value.
+   *
+   * @throws an error if rules is not an array
+   * @throws an error if rules doesn't contain object(s) with key(s) and value(s)
    *
    * @example
    * // Add CSS rules for different screen sizes and background colors
@@ -65,6 +85,10 @@ const cssManager = () => {
    * ]);
    */
   const createCSSRules = (rules) => {
+    if (!Array.isArray(rules)) {
+      throw new Error('rules must an Array object');
+    }
+
     for (const rule of rules) {
       addRule(rule);
     }
