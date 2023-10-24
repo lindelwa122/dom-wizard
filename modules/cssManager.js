@@ -70,7 +70,12 @@ const cssManager = () => {
     }
   };
 
-  return { addRule, createCSSRules, removeRule };
+  return {
+    addRule,
+
+    createCSSRules,
+    removeRule,
+  };
 };
 
 export default cssManager();
