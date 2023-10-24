@@ -1,6 +1,8 @@
 import domManager from './modules/domManager';
+import cssManager from './modules/cssManager';
 
 export { domManager };
+export { cssManager };
 
 const generateContent = () => {
   const _createElement = (tagName, options = {}) => {
