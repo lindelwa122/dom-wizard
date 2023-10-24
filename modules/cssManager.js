@@ -37,7 +37,37 @@ const cssManager = () => {
     stylesheet.deleteRule(index);
   };
 
-  return { addRule, removeRule };
+  /**
+   * Adds multiple CSS rules to the page.
+   *
+   * @param {Array<Object>} rules - An array containing CSS rules, where each rule is an object
+   * with a selector as its key and a declaration as its value.
+   *
+   * @example
+   * // Add CSS rules for different screen sizes and background colors
+   * cssManager.createCSSRules([
+   *   {
+   *     '@media screen and (min-width: 480px)': `
+   *       body {
+   *         background-color: blue;
+   *       }
+   *     `
+   *   },
+   *   {
+   *     'body': `
+   *       min-height: 100vh;
+   *       background-color: red;
+   *     `
+   *   }
+   * ]);
+   */
+  const createCSSRules = (rules) => {
+    for (const rule of rules) {
+      addRule(rule);
+    }
+  };
+
+  return { addRule, createCSSRules, removeRule };
 };
 
 export default cssManager();
