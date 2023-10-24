@@ -420,3 +420,23 @@ cssManager.createCSSRules([
   },
 ]);
 ```
+
+### removeRule(index)
+
+The `removeRule` function removes a CSS rule by its index. This function ensures that the index is a number before attempting removal.
+
+#### Parameters
+
+- `index` (Number): The index of the CSS rule to be removed. This should be a number. If `index` is not a number, an error will be thrown to prevent incorrect removal. You can obtain the index from the return value of `addRule` or by keeping track of the indexes when using `createCSSRules`.
+
+#### Example
+
+Here's an example of how to use the `removeRule` function to remove a CSS rule by its index:
+
+```javascript
+const ruleIndex = cssManager.addRule({ body: 'background-color: red' });
+// Use the index to remove the rule:
+cssManager.removeRule(ruleIndex);
+```
+
+**Note**: Every time a style is added using `addRule` or `createCSSRules`, it is added as the last index of `cssRules`. The index is equivalent to `stylesheet.cssRules.length`.
