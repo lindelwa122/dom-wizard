@@ -417,3 +417,106 @@ The `remove` function uses the provided selector to query the DOM for elements. 
 #### Why is it Useful?
 
 The `remove` function provides a straightforward way to remove elements from the DOM based on specified criteria. This is essential for keeping the DOM updated and tidy, especially in complex web applications where elements might need to be dynamically added or removed based on user interactions or other events. The ability to remove specific elements or a group of elements enhances the flexibility and user experience of web applications, making the `remove` function a valuable utility for managing the DOM effectively.
+
+## cssManager Module
+
+The cssManager module facilitates the creation and application of CSS styles to elements. It's important to note that this module isn't intended to replace traditional CSS, but rather to provide an API for efficiently adding CSS rules to elements using JavaScript when it's the most suitable approach.
+
+### addRule(rule)
+
+The `addRule` function adds a CSS rule to the stylesheet.
+
+**Parameter**
+
+- `rule` (Object): An object representing the CSS rule to be added. It consists of a selector as the key and a declaration as the value. The declaration can include complex CSS properties, states, and media queries. Here are some examples:
+
+1. Simple selector:
+
+   ```javascript
+   {
+     'body': 'background-color: yellow'
+   }
+   ```
+
+2. Selector with a state:
+
+   ```javascript
+   {
+     'button:hover': 'background-color: #0f0'
+   }
+   ```
+
+3. Multiple declarations in the value:
+
+   ```javascript
+   {
+     'button': `
+       border-radius: 20px;
+       background: yellowgreen;
+       padding: 10px 20px;
+     `
+   }
+   ```
+
+4. Using media queries:
+   ```javascript
+   {
+     '@media screen and (min-width: 480px)': `
+       button {
+         background-color: blue;
+       }
+     `
+   }
+   ```
+
+The `addRule` function utilizes the `CSSStyleSheet` web API to add and manage CSS rules.
+
+### createCSSRules(rules)
+
+The `createCSSRules` function adds an array of styles to the page by using the `addRule` function.
+
+**Parameter**
+
+- `rules` (Array): An array of objects, where each object represents a CSS rule to be added. The format of these objects is explained in the [`addRule` documentation](#addrulerule).
+
+**Usage**
+
+You can use the `createCSSRules` function as follows:
+
+```javascript
+cssManager.createCSSRules([
+  {
+    '@media screen and (min-width: 480px)': `
+      body {
+        background-color: blue;
+      }
+    `,
+  },
+  {
+    body: `
+      min-height: 100vh;
+      background-color: red;
+    `,
+  },
+]);
+```
+
+### removeRule(index)
+
+The `removeRule` function removes a CSS rule by its index. This function ensures that the index is a number before attempting removal.
+
+#### Parameters
+
+- `index` (Number): The index of the CSS rule to be removed. This should be a number. If `index` is not a number, an error will be thrown to prevent incorrect removal. You can obtain the index from the return value of `addRule` or by keeping track of the indexes when using `createCSSRules`.
+
+#### Example
+
+Here's an example of how to use the `removeRule` function to remove a CSS rule by its index:
+
+```javascript
+const ruleIndex = cssManager.addRule({ body: 'background-color: red' });
+// Use the index to remove the rule:
+cssManager.removeRule(ruleIndex);
+```
+
+**Note**: Every time a style is added using `addRule` or `createCSSRules`, it is added as the last index of `cssRules`. The index is equivalent to `stylesheet.cssRules.length`.
