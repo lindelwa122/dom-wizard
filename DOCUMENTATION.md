@@ -337,3 +337,56 @@ The `remove` function uses the provided selector to query the DOM for elements. 
 #### Why is it Useful?
 
 The `remove` function provides a straightforward way to remove elements from the DOM based on specified criteria. This is essential for keeping the DOM updated and tidy, especially in complex web applications where elements might need to be dynamically added or removed based on user interactions or other events. The ability to remove specific elements or a group of elements enhances the flexibility and user experience of web applications, making the `remove` function a valuable utility for managing the DOM effectively.
+
+## cssManager Module
+
+The cssManager module facilitates the creation and application of CSS styles to elements. It's important to note that this module isn't intended to replace traditional CSS, but rather to provide an API for efficiently adding CSS rules to elements using JavaScript when it's the most suitable approach.
+
+### addRule(rule)
+
+The `addRule` function adds a CSS rule to the stylesheet.
+
+**Parameter**
+
+- `rule` (Object): An object representing the CSS rule to be added. It consists of a selector as the key and a declaration as the value. The declaration can include complex CSS properties, states, and media queries. Here are some examples:
+
+1. Simple selector:
+
+   ```javascript
+   {
+     'body': 'background-color: yellow'
+   }
+   ```
+
+2. Selector with a state:
+
+   ```javascript
+   {
+     'button:hover': 'background-color: #0f0'
+   }
+   ```
+
+3. Multiple declarations in the value:
+
+   ```javascript
+   {
+     'button': `
+       border-radius: 20px;
+       background: yellowgreen;
+       padding: 10px 20px;
+     `
+   }
+   ```
+
+4. Using media queries:
+   ```javascript
+   {
+     '@media screen and (min-width: 480px)': `
+       button {
+         background-color: blue;
+       }
+     `
+   }
+   ```
+
+The `addRule` function utilizes the `CSSStyleSheet` web API to add and manage CSS rules.
