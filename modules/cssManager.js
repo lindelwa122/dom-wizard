@@ -23,7 +23,21 @@ const cssManager = () => {
     );
   };
 
-  return { addRule };
+  /**
+   * Removes a CSS rule from the stylesheet using the specified index.
+   *
+   * @param {number} index - The index of the rule to be removed.
+   *
+   * @example
+   * // Remove a CSS rule by its index
+   * cssManager.removeRule(ruleIndex);
+   */
+  const removeRule = (index) => {
+    const stylesheet = document.querySelector('#dml-style').sheet;
+    stylesheet.deleteRule(index);
+  };
+
+  return { addRule, removeRule };
 };
 
 export default cssManager();
