@@ -393,15 +393,15 @@ The `addRule` function utilizes the `CSSStyleSheet` web API to add and manage CS
 
 ### createCSSRules(rules)
 
-Adds an `Array` of styles to the pages using `addRule` function.
+The `createCSSRules` function adds an array of styles to the page by using the `addRule` function.
 
-#### Parameter
+**Parameter**
 
-- `rules` is an array of objects that `addRule` will use to add the styles to the page. The format of these objects is explained [here](#addrulerule).
+- `rules` (Array): An array of objects, where each object represents a CSS rule to be added. The format of these objects is explained in the [`addRule` documentation](#addrulerule).
 
-#### Usage
+**Usage**
 
-Here's an example of how you can use the function:
+You can use the `createCSSRules` function as follows:
 
 ```javascript
 cssManager.createCSSRules([
