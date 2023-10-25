@@ -73,17 +73,15 @@ const title = store.title;
 The `register()` function is used to register routes in the registry. The `register()` function accepts an array of objects containing information about a route.
 
 ```javascript
-
 const routes = [
-  { id: "home", route: home },
-  { id: "about", route: about },
-  { id: "contact", route: contact }
-]
+  { id: 'home', route: home },
+  { id: 'about', route: about },
+  { id: 'contact', route: contact },
+];
 
-router.register(routes); 
+router.register(routes);
 
 // register() can be called or invoked only once
-
 ```
 
 **NOTE**
@@ -92,15 +90,14 @@ router.register(routes);
 
 `register()` cannot be invoked more than once.
 
-
 ## AddStyle function Usage
 
 The `addStyle` function can be used to add CSS styles to elements on a web page.
 
 The `addStyle` function takes two parameters:
 
-* `element`: The element to add the CSS styles to.
-* `declaration`: An object of CSS properties and values.
+- `element`: The element to add the CSS styles to.
+- `declaration`: An object of CSS properties and values.
 
 The `declaration` object can contain any valid CSS properties. For example, to add the `background-color: red` style to the `<body>` element, you would use the following code:
 
@@ -520,3 +517,57 @@ cssManager.removeRule(ruleIndex);
 ```
 
 **Note**: Every time a style is added using `addRule` or `createCSSRules`, it is added as the last index of `cssRules`. The index is equivalent to `stylesheet.cssRules.length`.
+
+## Router Module
+
+The `router` module handles route registration and link configuration, allowing for navigation within a web application.
+
+### `register(routes)`
+
+Register routes for navigation within the application.
+
+#### Parameters
+
+- `routes` (Array): An array containing route information objects. Each route object must have the following properties:
+  - `id` (String): A unique identifier for the route.
+  - `route` (Object): An object to be used by `domManager.create()` to construct the DOM of the new route/page.
+
+**Example:**
+
+```javascript
+[
+  { id: 'home', route: home },
+  { id: 'about', route: about },
+  { id: 'contact', route: contact },
+];
+```
+
+After validation, the function adds each route to the internal `_pages` array.
+
+#### Error Handling
+
+The `register` function performs the following error checks:
+
+- It can only be invoked once throughout the application.
+- The `routes` parameter must be an array.
+- Each item in the `routes` array must be an object with key-value pairs.
+- Each item in the `routes` array must have the required 'id' and 'route' keys.
+- No two routes are allowed to share the same 'id'.
+
+### `configureLink(linkInfo)`
+
+Configure an HTML element to act as a link for navigation.
+
+### Parameters
+
+- `linkInfo` (Object): An object containing specific information about the link element. It should have the following properties:
+  - `name` (String): The name of the link.
+  - `to` (String): The ID of the page to which the link will navigate.
+  - `element` (HTMLElement): The HTML element to attach a click event listener to.
+  - `host` (String, optional): A selector specifying where the content should be rendered. If not provided, it defaults to `#root`.
+
+The `to` property must correspond to a valid route ID within the `_pages` array. If the constraints are not met, the function throws an error.
+
+The `configureLink` function adds an event listener to the specified element. When triggered, the linked content will be displayed in the page at the specified container using `domManager`.
+
+The function is useful in conjunction with `domManager` and allows developers to manually configure links within the app. It also adds the 'active' class to the clicked element, making it easier to style active links.
