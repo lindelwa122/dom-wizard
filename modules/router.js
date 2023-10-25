@@ -60,6 +60,12 @@ const router = () => {
     }
   };
 
+  const _deactivate = () => {
+    for (const route of _routes) {
+      route.element.classList.remove('active');
+    }
+  };
+
   /**
    * Configures a link with the provided link information.
    *
