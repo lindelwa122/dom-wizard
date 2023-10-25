@@ -1,8 +1,10 @@
 import domManager from './modules/domManager';
 import cssManager from './modules/cssManager';
+import router from './modules/router';
 
 export { domManager };
 export { cssManager };
+export { router };
 
 const generateContent = () => {
   const _createElement = (tagName, options = {}) => {
@@ -204,87 +206,87 @@ const createStyleSheet = (() => {
 
 export { createStyleSheet };
 
-const router = (() => {
-  const pages = [];
-  const _routers = [];
+// const router = (() => {
+//   const pages = [];
+//   const _routers = [];
 
-  const configRouter = (info) => {
-    _routers.push(info);
+//   const configRouter = (info) => {
+//     _routers.push(info);
 
-    info.element.addEventListener('click', () => {
-      _deactive(info.name);
-      console.log({ ele: info.element });
-      _activate(info.element);
-      
-      let to;
-      for (const page of pages) {
-        if (page.id === info.to) {
-          to = page.route;
-        }
-      }
+//     info.element.addEventListener('click', () => {
+//       _deactive(info.name);
+//       console.log({ ele: info.element });
+//       _activate(info.element);
 
-      generateContent().addTreeToTheDOM(to);
-    });
-  };
+//       let to;
+//       for (const page of pages) {
+//         if (page.id === info.to) {
+//           to = page.route;
+//         }
+//       }
 
-  const _deactive = (name) => {
-    for (const router of _routers) {
-      if (router.name === name) {
-        router.element.classList.remove('active');
-      }
-    }
-  };
+//       generateContent().addTreeToTheDOM(to);
+//     });
+//   };
 
-  const _activate = (ele) => {
-    ele.classList.add('active');
-  };
+//   const _deactive = (name) => {
+//     for (const router of _routers) {
+//       if (router.name === name) {
+//         router.element.classList.remove('active');
+//       }
+//     }
+//   };
 
-  const register = (routes) => {
+//   const _activate = (ele) => {
+//     ele.classList.add('active');
+//   };
 
-    const _idSet = new Set();
+//   const register = (routes) => {
 
-    /* Invoke only once */
-    window.onbeforeunload = () => {
-      localStorage.setItem("route_flag", JSON.stringify(true));
-    }
+//     const _idSet = new Set();
 
-    /* checking id uniqueness using set*/
-    for (const route of routes) {
-      if(_idSet.has(route.id)) {
-        console.error(`Id ${route.id} is not unique`);
-        throw new Error("Unique Id must be assigned");
-      }
-      else {
-        _idSet.add(route.id);
-      }
-    }
-    
-    /* Error invoking for more than once */
-    if (!JSON.parse(localStorage.getItem("route_flag"))) {
-      console.error("Invalid to register routes more than once");
-      throw new Error("Cannot invoke register() more than once")
-    }
+//     /* Invoke only once */
+//     window.onbeforeunload = () => {
+//       localStorage.setItem("route_flag", JSON.stringify(true));
+//     }
 
-    /* id is unique */
-    for (const route of routes) {
+//     /* checking id uniqueness using set*/
+//     for (const route of routes) {
+//       if(_idSet.has(route.id)) {
+//         console.error(`Id ${route.id} is not unique`);
+//         throw new Error("Unique Id must be assigned");
+//       }
+//       else {
+//         _idSet.add(route.id);
+//       }
+//     }
 
-      if (!route.id || !route.route) {
-        console.error("Please enter valid id and route");
-        throw new Error("Please make sure that a valid id and route is passed");
-      }
+//     /* Error invoking for more than once */
+//     if (!JSON.parse(localStorage.getItem("route_flag"))) {
+//       console.error("Invalid to register routes more than once");
+//       throw new Error("Cannot invoke register() more than once")
+//     }
 
-      if (typeof(route.route) !== "object") {
-        console.error(`${route.route} is not an object`);
-        throw new Error("Object is the valid parameter");
-      }
+//     /* id is unique */
+//     for (const route of routes) {
 
-      pages.push(route);
-    }
+//       if (!route.id || !route.route) {
+//         console.error("Please enter valid id and route");
+//         throw new Error("Please make sure that a valid id and route is passed");
+//       }
 
-    localStorage.setItem("route_flag", JSON.stringify(false));
-  };
+//       if (typeof(route.route) !== "object") {
+//         console.error(`${route.route} is not an object`);
+//         throw new Error("Object is the valid parameter");
+//       }
 
-  return { configRouter, register, pages };
-})();
+//       pages.push(route);
+//     }
 
-export { router };
+//     localStorage.setItem("route_flag", JSON.stringify(false));
+//   };
+
+//   return { configRouter, register, pages };
+// })();
+
+// export { router };
