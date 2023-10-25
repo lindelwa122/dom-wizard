@@ -1,5 +1,8 @@
+import domManager from './domManager';
+
 const router = () => {
   const _pages = [];
+  const _routes = [];
 
   /**
    * Registers the provided routes, allowing them to be used later for navigation.
@@ -57,7 +60,48 @@ const router = () => {
     }
   };
 
-  return { register };
+  /**
+   * Configures a link with the provided link information.
+   *
+   * @param {Object} linkInfo - The link information object.
+   * @param {string} linkInfo.name - The name of the link.
+   * @param {string} linkInfo.to - The ID of the page to link to.
+   * @param {HTMLElement} linkInfo.element - The HTML element to attach the click event listener to.
+   *
+   * @throws {Error} If the linkInfo object is missing 'name,' 'to,' or 'element' properties.
+   * @throws {Error} If the specified page ID ('to') does not match any registered pages.
+   */
+  const configureLink = (linkInfo) => {
+    if (!linkInfo.name || !linkInfo.to || !linkInfo.element) {
+      throw new Error(
+        'linkInfo should contain name, to, and element as its properties.',
+      );
+    }
+
+    const page = _pages.find((page) => page.id === linkInfo.to);
+    if (!page) {
+      throw new Error(
+        `There are no registered page with the id of ${linkInfo.to}`,
+      );
+    }
+
+    // Add the linkInfo object to the routes array
+    _routes.push(linkInfo);
+
+    linkInfo.element.addEventListener('click', () => {
+      // Deactivate all links
+      _deactivate();
+
+      // Create the element for the page
+      const selector = linkInfo.host ? linkInfo.host : '#root';
+      domManager.create(page, selector);
+
+      // Activate the link
+      linkInfo.element.classList.add('active');
+    });
+  };
+
+  return { configureLink, register };
 };
 
 export default router();
