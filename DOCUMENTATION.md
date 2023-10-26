@@ -415,6 +415,113 @@ The `remove` function uses the provided selector to query the DOM for elements. 
 
 The `remove` function provides a straightforward way to remove elements from the DOM based on specified criteria. This is essential for keeping the DOM updated and tidy, especially in complex web applications where elements might need to be dynamically added or removed based on user interactions or other events. The ability to remove specific elements or a group of elements enhances the flexibility and user experience of web applications, making the `remove` function a valuable utility for managing the DOM effectively.
 
+### `update(instr)`
+
+The `update()` function is a versatile tool for modifying information and attributes of elements within the DOM. It supports actions such as toggling class names, adding classes to the classList, updating IDs, and modifying specific attributes.
+
+#### Parameters
+
+- `instr` (Object) - Instructions for updating elements, including what to update and how. The `instr` object should always contain `selector` and `action` as required properties. Here's an example of an `instr` object:
+
+  ```javascript
+  {
+    selector: ".content > div",
+    action: "update",
+    innerHTML: "<p>New Text</p>"
+  }
+  ```
+
+- Supported actions are: `toggle`, `replace`, `replaceAll`, `update`, `add`, `remove`, and `style`. Each action has its own required properties.
+
+#### Error Handling
+
+- Throws an error when `selector` and/or `action` are missing.
+- Throws an error when the specified element is not found in the DOM.
+
+#### `toggle` Action
+
+The `toggle` action toggles a class in the `classList` of the provided element. It exclusively works with the `class` attribute and requires the `className` property.
+
+##### Usage Example:
+
+```javascript
+domManager.update({
+  selector: '.content > div',
+  action: 'toggle',
+  className: 'active',
+});
+```
+
+#### `replace` Action
+
+The `replace` action replaces a specific attribute in the provided element. It requires the properties `attribute`, `new`, and `old`. If the specified attribute doesn't support `replace`, an error is raised.
+
+##### Usage Example:
+
+```javascript
+domManager.update({
+  selector: '.content > div',
+  action: 'replace',
+  attribute: 'classList',
+  old: 'start',
+  new: 'stop',
+});
+```
+
+#### `replaceAll` Action
+
+The `replaceAll` action is similar to `replace`, but it replaces all occurrences of a specific value within the provided element.
+
+##### Usage Example:
+
+```javascript
+domManager.update({
+  selector: '.content > div',
+  action: 'replaceAll',
+  attribute: 'textContent',
+  old: 'e',
+  new: '#',
+});
+```
+
+#### `update` Action
+
+The `update` action allows you to modify the element's properties and attributes. It can also update the children of the specified element.
+
+##### Usage Example:
+
+```javascript
+domManager.update({
+  selector: '.content > div',
+  action: 'update',
+  id: 'new-id',
+  textContent: 'New Text',
+});
+```
+
+#### `add` and `remove` Actions
+
+The `add` and `remove` actions add and remove data, respectively, from the specified element. Both require the `attribute` and `value` properties. An error is thrown if the specified `attribute` doesn't support `add` or `remove`.
+
+#### `style` Action
+
+The `style` action is used to update styles of the specified element.
+
+##### Usage Example:
+
+```javascript
+domManager.update({
+  selector: '.content > div',
+  action: 'style',
+  backgroundColor: 'red',
+  padding: '20px',
+});
+```
+
+#### Usefulness
+
+The `update` function simplifies DOM element updates, streamlining the implementation and error handling process. It saves time and reduces the need for repetitive code, as it eliminates the hassle of manually fetching elements and performing updates.
+
 ## cssManager Module
 
 The cssManager module facilitates the creation and application of CSS styles to elements. It's important to note that this module isn't intended to replace traditional CSS, but rather to provide an API for efficiently adding CSS rules to elements using JavaScript when it's the most suitable approach.
