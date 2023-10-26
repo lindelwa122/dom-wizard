@@ -1,235 +1,32 @@
-## createStore Usage
+# DOM Wizard
 
-To create the store, use the `createStore()` function. For example, to create a store and add all the variables which you want to access anywhere from the application, you would use the following code:
+DomWizard is a library designed to simplify the manipulation of DOM elements, offering features for creating, updating, reading, and deleting elements in an accessible and engaging manner. It also facilitates CSS styling and style manipulation, making it a user-friendly tool for web developers.
 
-```javascript
-const storeObject = {
-  name: 'John Doe',
-  age: 35,
-  univerity: 'Stanford',
-  isGraduated: false,
-};
+### Key Features
 
-// creates a "store" and stores the object
-createStore(storeObject);
+- **Effortless DOM Manipulation:** DomWizard empowers developers with the ability to effortlessly create, modify, read, and remove DOM elements. Its intuitive functions make working with the DOM a breeze.
 
-// to retrieve the "store object" use getStore()
-```
+- **Seamless CSS Styling:** DomWizard provides a straightforward approach to adding and manipulating CSS styles in JavaScript.
 
-Note: `createStore()` cannot be invoked or called more than once even in different script files of the same application.
+- **Lightweight Routing:** Ideal for small applications, DomWizard offers a simple routing solution. It enables users to switch between multiple pages without the need for page reloading or managing multiple HTML files.
 
-## getStore Usage
+- **Global Variable Store (Experimental):** While still in the experimental phase, DomWizard introduces a global store. This feature allows for the storage and accessibility of global variables throughout your application, enhancing data management.
 
-To retrieve the store, use the `getStore()` function with no parameters needed. For example, to retrieve a store and access functionalities like `updateState()` and `getState()` anywhere from the application, you would use the following code:
+- **Quick App Setup:** DomWizard's 'create-app' tool simplifies the application setup process by leveraging Webpack. Say goodbye to complex configurations and dive straight into development.
 
-```javascript
-const store = getStore(); // retrieve store
+### Who Should Use DomWizard?
 
-const title = store.getState('title'); // get the state of store
+DomWizard caters to small JavaScript projects seeking an efficient and straightforward way to handle CSS and DOM elements. It's the perfect choice for developers looking to enhance their productivity without the overhead of a complex framework.
 
-console.log(title); // prints the title
-
-// updates the state of the store
-const newStore = store.updateState('title', 'javascript');
-
-console.log(newStore); // prints the object returned by updateState
-
-console.log(store); // store is updated with new title
-```
-
-Note: `getStore()` retrieves the store and functionalities like `updateState()` and `getState()` can be used on the store object.
-
-Warning: `getStore()` is the only way to access the store.
-
-## getState Usage
-
-To get the state of the store, use the `getState()` function. For example, to get the state of the `key`, you would use the following code:
-
-```javascript
-const value = store.getState(key);
-
-// prints value of the key
-console.log(value);
-```
-
-Note: the function throws an error if the value doesn't exist.
-
-## updateState Usage
-
-To update the state of the store, use the `updateState()` function. For example, to update the title property of the store to 'My New Title', you would use the following code:
-
-```javascript
-updateState('title', 'My New Title');
-```
-
-To retrieve a property from the store, simply access the property on the store object. For example, to retrieve the title property of the store, you would use the following code:
-
-```javascript
-const title = store.title;
-```
-
-## Register function Usage
-
-The `register()` function is used to register routes in the registry. The `register()` function accepts an array of objects containing information about a route.
-
-```javascript
-const routes = [
-  { id: 'home', route: home },
-  { id: 'about', route: about },
-  { id: 'contact', route: contact },
-];
-
-router.register(routes);
-
-// register() can be called or invoked only once
-```
-
-**NOTE**
-
-`id` and `route` are required parameters where the `id` has to be **unique** and `route` must be an **object**.
-
-`register()` cannot be invoked more than once.
-
-## AddStyle function Usage
-
-The `addStyle` function can be used to add CSS styles to elements on a web page.
-
-The `addStyle` function takes two parameters:
-
-- `element`: The element to add the CSS styles to.
-- `declaration`: An object of CSS properties and values.
-
-The `declaration` object can contain any valid CSS properties. For example, to add the `background-color: red` style to the `<body>` element, you would use the following code:
-
-```javascript
-addStyle(document.body, { backgroundColor: 'red' });
-```
-
-To add the `font-size: 16px` style to all of the `.my-elements` elements, you would use the following code:
-
-```javascript
-addStyle(document.querySelectorAll('.my-elements'), { fontSize: '16px' });
-```
-
-## Router.configureLink
-
-Confiugures a `link` with the given linkInfo object.
-
-### Parameters:
-
-`linkInfo`: An object with the following properties:
-
-    name: The name of the link.
-
-    to: The ID of the page to link to.
-
-    element: The HTML element to attach the click event listener to.
-
-### Throws:
-
-`Error`: Invalid linkInfo object if name, to, or element is missing.
-
-`Error`: Invalid page ID if the page with the given ID does not exist.
-
-### Example:
-
-```JavaScript
-const linkInfo = {
-  name: 'home-link',
-  to: 'home',
-  element: document.querySelector('#home-link'),
-};
-
-configureLink(linkInfo);
-
-linkInfo.element.click(); // Navigates to the home page.
-```
-
-## DOM-delete() feature usage
-
-To delete the specific HTML element from the DOM, use the `deleteElement()` function. For example, to delete a HTML element with id as `heading` you would use the following code:
-
-```javascript
-import { deleteContent } from './index.js';
-
-const dom = deleteContent();
-
-dom.deleteElement('#heading');
-```
-
-To delete all the elements matching the selector (here class `para`), pass the second parameter `all` as `true` (has default value false), use the following code:
-
-```javascript
-import { deleteContent } from './index.js';
-
-const dom = deleteContent();
-
-dom.deleteElement('.para', true);
-```
-
-NOTE: Always valid selector must be passed.
-
-## read() Usage
-
-To read the property of the HTML DOM Element, use the `read()` function. For example, to read the innerHTML of the element with a class selector ".para", ( selector parameter is the must and the other two are optional ) you may use the following code:
-
-```javascript
-import { readContent } from './index.js';
-
-const domManager = readContent();
-
-// single element property value (innerHTML) returned
-const data = domManager.read('.para', 'innerHTML');
-
-console.log(data);
-```
-
-To read the property of the multiple HTML DOM Elements, use the `read()` function along with a third parameter `all` set to true default being false. `all` takes a boolean value `true` or `false` where true indicates selection of `all` the elements matching the selector else the first element with the selector is retrieved. For example, to read the innerHTML of the multiple elements with the same class selector ".para", you may use the following code:
-
-```javascript
-import { readContent } from './index.js';
-
-const domManager = readContent();
-
-// multiple elements property values (innerHTML) returned in an array
-const data = domManager.read('.para', 'innerHTML', true);
-
-console.log(data);
-```
-
-The second parameter is optional, if not specified then based the value of `all` given, the elements are retrieved and returned instead of the property values:
-
-```javascript
-import { readContent } from './index.js';
-
-const domManager = readContent();
-
-// the html DOM element itself is returned
-const data = domManager.read('.para', false);
-
-console.log(data);
-```
-
-```javascript
-import { readContent } from './index.js';
-
-const domManager = readContent();
-
-// the html DOM elements itself is returned in an array
-const data = domManager.read('.para', true);
-
-console.log(data);
-```
-
-# domManager Module
+## domManager Module
 
 The `domManager` module offers functionalities for creating, updating, reading, and deleting DOM elements. Central to this module is the `create` function, designed to streamline the creation and manipulation of HTML elements within the DOM.
 
-## `create(element, selector, append)`
+### `create(element, selector, append)`
 
 The `create` function generates an HTML element based on the provided `element` object and appends it to a specified parent element or replaces existing content in the parent.
 
-### Parameters
+#### Parameters
 
 1. `element` (`Object`): An object providing information about the element to be created. It should have the following properties:
 
@@ -241,7 +38,7 @@ The `create` function generates an HTML element based on the provided `element` 
 
 3. `append` (`boolean`, optional): Indicates whether to append the new element as a child or replace existing content in the parent. Default is `false`.
 
-### Under the Hood: How it Works
+#### Under the Hood: How it Works
 
 1. **Element Creation (`_createElement`)**: This helper function creates an HTML element based on the `element` object provided. It first checks if the `tagName` is provided, throwing an error if not. It then uses `document.createElement` to create the element and sets any additional properties specified in the `options` object, such as `classList` or `id`.
 
@@ -249,9 +46,9 @@ The `create` function generates an HTML element based on the provided `element` 
 
 3. **Appending the Element (`create`)**: The `create` function utilizes `_createDOMTree` to create the HTML element. It then selects the parent element using the provided `selector` or the default `#root`. Depending on the `append` parameter, it appends the element as a child or replaces the parent's content.
 
-### Usage Examples
+#### Usage Examples
 
-#### Example 1: Creating a Simple Element
+##### Example 1: Creating a Simple Element
 
 ```javascript
 import domManager from '@dom-manipulation-library/dml';
@@ -269,7 +66,7 @@ domManager.create(simpleElement);
 
 In this example, a `div` element with the specified `id` and `classList` is created and appended to the default parent, `#root`.
 
-#### Example 2: Appending to a Specific Parent
+##### Example 2: Appending to a Specific Parent
 
 ```javascript
 import domManager from '@dom-manipulation-library/dml';
@@ -291,7 +88,7 @@ domManager.create(childElement, '#parentDiv');
 
 Here, a `span` element is appended to a specific parent with the selector `#parentDiv`.
 
-### Usefulness
+#### Usefulness
 
 The `create` function significantly simplifies DOM manipulation. By encapsulating the creation and appending of elements, it promotes code reusability and allows for dynamic content generation within web applications. This enhances development efficiency, making it a valuable tool for front-end developers.
 
