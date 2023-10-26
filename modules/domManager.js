@@ -103,7 +103,7 @@ const domManager = () => {
    *
    * @param {string} selector - The CSS selector to query the DOM.
    * @param {string} propertyName - The property name to retrieve from the selected element(s).
-   * @param {boolean} all- If true, retrieves the property from all matching elements; otherwise, retrieves from the first matching element.
+   * @param {boolean} all - If true, retrieves the property from all matching elements; otherwise, retrieves from the first matching element.
    *
    * @throws Throws an error if retrieving the element was not possible or if the selector didn't match any elements.
    *
