@@ -678,3 +678,44 @@ The `to` property must correspond to a valid route ID within the `_pages` array.
 The `configureLink` function adds an event listener to the specified element. When triggered, the linked content will be displayed in the page at the specified container using `domManager`.
 
 The function is useful in conjunction with `domManager` and allows developers to manually configure links within the app. It also adds the 'active' class to the clicked element, making it easier to style active links.
+
+## store (Experimental)
+
+The `store` module serves as a central storage mechanism for variables accessible throughout the app. Users can retrieve and modify these variables from anywhere within the application. It's important to note that the `store` is not designed for server-side purposes; its primary function is to facilitate the use of shared variables across different app files. However, please be aware that all data stored in the `store` is temporary and gets reset when the app stops running.
+
+### `createStore(storeObject)`
+
+The `createStore` function initializes the store by accepting an object with key-value pairs. It can be invoked only once to maintain organization within the store and enable users to easily manage all variables stored within it.
+
+#### Usage Example
+
+```javascript
+store.createStore({
+  userID: 'fd4rew34_dfr4',
+  username: 'therealjohndoe',
+  profileUpdated: false,
+  profileImg: undefined,
+});
+```
+
+### `getState(key)`
+
+The `getState` function retrieves the value associated with a specified key in the store.
+
+#### Usage Example
+
+```javascript
+const username = store.getState('username');
+```
+
+### `updateState(key, newValue)`
+
+The `updateState` function allows you to modify the value associated with a specific key in the store. If the key doesn't exist, an error is thrown.
+
+#### Usage Example
+
+```javascript
+store.updateStore('username', 'justJohn');
+```
+
+This revised documentation provides more clarity, context, and examples to help users understand the purpose and functionality of the `store` module.
