@@ -33,6 +33,12 @@ const domManager = () => {
       for (const [prop, value] of Object.entries(element.options)) {
         el[prop] = prop === 'classList' ? value.join(' ') : value;
       }
+
+      if (element.options.style) {
+        for (const [prop, value] of Object.entries(element.options.style)) {
+          el.style[prop] = value;
+        }
+      }
     }
 
     return el;
