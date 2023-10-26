@@ -143,7 +143,7 @@ const domManager = () => {
    *
    * @returns {Array|HTMLElement} If all is true, an array of removed elements; otherwise, the removed element.
    */
-  const remove = (selector, all) => {
+  const remove = (selector, all = false) => {
     const el = !all
       ? document.querySelector(selector)
       : document.querySelectorAll(selector);
