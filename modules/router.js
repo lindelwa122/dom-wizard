@@ -77,6 +77,7 @@ const router = () => {
    * @param {Object} linkInfo - The link information object.
    * @param {string} linkInfo.name - The name of the link.
    * @param {string} linkInfo.to - The ID of the page to link to.
+   * @param {string} [linkInfo.host] - The selector of the element to host the page.
    * @param {HTMLElement} linkInfo.element - The HTML element to attach the click event listener to.
    *
    * @throws {Error} If the linkInfo object is missing 'name,' 'to,' or 'element' properties.
