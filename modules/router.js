@@ -63,9 +63,11 @@ const router = () => {
     }
   };
 
-  const _deactivate = () => {
+  const _deactivate = (name) => {
     for (const route of _routes) {
-      route.element.classList.remove('active');
+      if (route.name === name) {
+        route.element.classList.remove('active');
+      }
     }
   };
 
@@ -99,7 +101,7 @@ const router = () => {
 
     linkInfo.element.addEventListener('click', () => {
       // Deactivate all links
-      _deactivate();
+      _deactivate(linkInfo.name);
 
       // Create the element for the page
       const selector = linkInfo.host ? linkInfo.host : '#root';
