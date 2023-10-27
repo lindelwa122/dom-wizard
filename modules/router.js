@@ -1,5 +1,8 @@
 import domManager from './domManager';
 
+/**
+ * The router module is responsible for registering routes, linking pages, and configuring URLs.
+ */
 const router = () => {
   const _pages = [];
   const _routes = [];
