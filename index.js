@@ -170,6 +170,41 @@ const deleteContent = () => {
 
 export { deleteContent };
 
+const event = () => {
+  const addEvent = (selector, event, eventHandler, all = false)=>{
+    const el = !all
+      ? document.querySelector(selector)
+      : document.querySelectorAll(selector);
+
+      if(typeof(selector) !== 'string' || typeof(event) !== 'string' || typeof(all) !== 'boolean'){
+        throw new Error("Parameter type is invalid");
+      }
+    
+      if (!el || el.length === 0) {
+        console.error('invalid selector');
+        throw new Error('invalid selector');
+      }
+
+      if(typeof(eventHandler) !== "function"){
+        throw new Error("Event handler must be a callback function");
+      }
+
+      if(!all){
+        el.addEventListener(event, eventHandler);
+      }
+    
+      if(all){
+        el.forEach((element)=>{
+           element.addEventListener(event, eventHandler);
+        });
+      }
+
+  };
+  return { addEvent };
+};
+
+export { event };
+
 const createStyleSheet = (() => {
   const addStyle = (el, declaration) => {
     for (const val of Object.entries(declaration)) {

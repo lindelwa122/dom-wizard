@@ -220,6 +220,35 @@ const data = domManager.read('.para', true);
 
 console.log(data);
 ```
+## addEvent() usage
+
+This function is used to `add events` to specific HTML element. It takes four parameters like `selector` (can be id, class), `event` (can be any events like click, onchange,mouseover), `eventHandler` (must be a callback function) and `all`(default is false).
+
+```javascript
+import { event } from './index.js';
+
+const { addEvent } = event();
+
+// adds "click" event to button with id "button".
+addEvent("#button","click",()=>{console.log("clicked")},false);
+```
+
+The `selector` and `event` must be in string, `all` must be in boolean. 
+
+If `all` is set to true , the function adds the event to all HTML elements matching the selector.
+
+```javascript
+import { event } from './index.js';
+
+const { addEvent } = event();
+
+const clickHandler = ()=>{console.log("clicked")};
+
+// adds "click" event to ALL the buttons with class "button".
+addEvent(".button", "click", clickHandler, true);
+```
+
+The callback function can be imported from any other `.js`file also.
 
 # domManager Module
 
