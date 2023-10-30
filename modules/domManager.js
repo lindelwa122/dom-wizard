@@ -23,21 +23,19 @@ const domManager = () => {
 
     const el = document.createElement(element.tagName);
 
-    if (!element.options) return el;
-
     if (element.link) {
-      router.configureLink(element.link);
+      router.configureLink(Object.assign({}, element.link, { element: el }));
     }
 
-    if (element.options) {
-      for (const [prop, value] of Object.entries(element.options)) {
-        el[prop] = prop === 'classList' ? value.join(' ') : value;
-      }
+    if (!element.options) return el;
 
-      if (element.options.style) {
-        for (const [prop, value] of Object.entries(element.options.style)) {
-          el.style[prop] = value;
-        }
+    for (const [prop, value] of Object.entries(element.options)) {
+      el[prop] = prop === 'classList' ? value.join(' ') : value;
+    }
+
+    if (element.options.style) {
+      for (const [prop, value] of Object.entries(element.options.style)) {
+        el.style[prop] = value;
       }
     }
 
