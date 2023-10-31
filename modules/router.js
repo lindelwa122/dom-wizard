@@ -106,7 +106,7 @@ const router = () => {
 
       // Create the element for the page
       const selector = linkInfo.host ? linkInfo.host : '#root';
-      domManager.create(page, selector);
+      domManager.create(page.route, selector);
 
       // Activate the link
       linkInfo.element.classList.add('active');
