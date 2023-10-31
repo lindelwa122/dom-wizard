@@ -334,12 +334,13 @@ const domManager = () => {
    * @param {Object} instr - Contains information of the element to be modified and how it should be modified.
    * @param {string} instr.selector - A string to select the element to be modified.
    * @param {'toggle' | 'replace' | 'replaceAll' | 'update' | 'add' | 'remove' | 'style'} instr.action - The action to be performed on the selected element.
+   * @param {boolean} all - A boolean value to specify if the first or all items matching the selector should be updated
    *
    * @throws {Error} When the 'selector' property is missing in instr.
    * @throws {Error} When the 'action' property is missing in instr.
    * @throws {Error} When the element is not found in the DOM.
    */
-  const update = (instr) => {
+  const update = (instr, all = false) => {
     if (!instr.selector) {
       throw new Error("The property 'selector' is required.");
     }
@@ -348,38 +349,51 @@ const domManager = () => {
       throw new Error("The property 'action' is required.");
     }
 
-    const element = document.querySelector(instr.selector);
+    const element = all
+      ? document.querySelectorAll(instr.selector)
+      : document.querySelector(instr.selector);
+
     if (!element) {
       throw new Error(`Element '${instr.selector}' does not exist in the DOM`);
     }
 
+    const applyUpdate = (callback) => {
+      if (all) {
+        element.forEach((item) => {
+          callback(item, instr);
+        });
+      } else {
+        callback(element, instr);
+      }
+    };
+
     switch (instr.action) {
       case 'toggle':
-        _toggle(element, instr);
+        applyUpdate(_toggle);
         break;
 
       case 'replace':
-        _replace(element, instr);
+        applyUpdate(_replace);
         break;
 
       case 'replaceAll':
-        _replaceAll(element, instr);
+        applyUpdate(_replaceAll);
         break;
 
       case 'update':
-        _update(element, instr);
+        applyUpdate(_update);
         break;
 
       case 'add':
-        _add(element, instr);
+        applyUpdate(_add);
         break;
 
       case 'remove':
-        _remove(element, instr);
+        applyUpdate(_remove);
         break;
 
       case 'style':
-        _style(element, instr);
+        applyUpdate(_style);
         break;
     }
   };
