@@ -81,6 +81,15 @@ const domManager = () => {
    */
   const create = (element, selector = '#root', append = false) => {
     const el = _createDOMTree(element);
+
+    if (element.before) {
+      if (typeof element.before !== 'function') {
+        throw new Error("'before' must be a function'");
+      }
+
+      element.before(el);
+    }
+
     const parent = document.querySelector(selector);
     if (!parent) {
       throw Error(
@@ -93,6 +102,15 @@ const domManager = () => {
     }
 
     parent.appendChild(el);
+
+    if (element.after) {
+      if (typeof element.after !== 'function') {
+        throw new Error("'after' must be a function'");
+      }
+
+      element.after(el);
+    }
+
     return parent;
   };
 

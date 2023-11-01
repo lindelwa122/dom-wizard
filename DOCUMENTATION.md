@@ -33,6 +33,8 @@ The `create` function generates an HTML element based on the provided `element` 
    - `tagName` (`string`, required): Specifies the type of HTML element to create.
    - `children` (`Array`): An array of child elements to be appended to the created element.
    - `options` (`Object`): Additional options for configuring the element (e.g., `classList`, `id`, `link`, `onclick`).
+   - `before` (`function`): Function to be invoked before the element is appended to the page.
+   - `after` (`function`): Function to be invoked after the element is appended to the page.
 
 2. `selector` (`string`, optional): Selector of the parent to append the newly created element into. If not provided, it defaults to `'#root'`.
 
@@ -514,5 +516,3 @@ The `updateState` function allows you to modify the value associated with a spec
 ```javascript
 store.updateStore('username', 'justJohn');
 ```
-
-This revised documentation provides more clarity, context, and examples to help users understand the purpose and functionality of the `store` module.
