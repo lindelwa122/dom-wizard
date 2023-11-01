@@ -1,8 +1,39 @@
-# DOM Manipulation Library
+# DOM Wizard &middot; ![Dynamic JSON Badge](https://img.shields.io/badge/license-MIT-blue.svg) ![npm (scoped)](https://img.shields.io/npm/v/dom-wizard) ![npm](https://img.shields.io/npm/dt/dom-wizard) ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
-A JavaScript library that allows easy manipulation of the DOM.
+<div align="center">
+<p>A JavaScript library that allows easy manipulation of the DOM.</p>
 
-Click [here](#features) to read more about the features.
+![DOM Wizard Logo](./assets/images/logo.png)
+
+<div>
+    <a href="https://npm.runkit.com/dom-wizard">Try on RunKit</a>
+    &middot;
+    <a href="https://github.com/lindelwa122/dom-wizard/issues">Report Bugs</a>
+    &middot;
+    <a href="https://github.com/lindelwa122/dom-wizard/issues">Request Feature</a>
+</div>
+
+</div>
+
+## About the project
+
+DomWizard is a JavaScript library that simplifies DOM manipulation and CSS styling. It provides functions for creating, updating, reading, and deleting DOM elements, as well as managing CSS styles in a straightforward manner. The library also offers a lightweight routing system and an experimental global variable store for data management.
+
+## Installation
+
+To create your project using Dom Wizard, run the following command:
+
+```
+npx create-project-with-dom-wizard <name-of-your-project>
+```
+
+To install the Dom Wizard and start using its features run:
+
+```
+npm install dom-wizard
+```
+
+Read the docs [here]().
 
 ## Examples
 
@@ -104,7 +135,7 @@ If you have a suggestion that would make this better, please fork the repo and c
 
 ## Features
 
-These are the features the library will have; most of the following haven't been built yet, and we need your assistance. To learn more about each feature, click on the subtitle. Additionally, you can indicate on the Issues tab that you are working on a specific feature, although this is not mandatory. Click [here](/CONTRIBUTING.md) to read more about our contributing rules.
+These are the features the library have. To learn more about each feature, click on the subtitle. Additionally, you can indicate on the Issues tab that you are working on a specific feature, although this is not mandatory. Click [here](/CONTRIBUTING.md) to read more about our contributing rules.
 
 ### domManager
 
@@ -150,7 +181,7 @@ for (account of accounts) {
 The same thing can be done with ease using the 4 functions that **domManager** will have:
 
 - [x] **create**
-- [ ] **update**
+- [x] **update**
 - [x] **read**
 - [x] **delete**
 
@@ -183,17 +214,17 @@ Here's how you can register routes and navigate to another page.
 **_index.js_**
 
 ```javascript
-import domManager, { router } from '@dom-manipulation-library/dml';
+import { domManager, router } from '@dom-manipulation-library/dml';
 import routes from './routes/router';
 
 const initialPage = {
   tagName: 'button',
+  link: {
+    name: 'navigation',
+    to: 'home',
+    host: '.sidebar',
+  }, // look here
   options: {
-    link: {
-      name: 'navigation',
-      to: 'home',
-      host: '.sidebar',
-    }, // look here
     innerHTML: 'Click Me - About',
   },
 };
@@ -206,21 +237,21 @@ Above, we create an initial page with nothing but a button that displays `Click 
 
 Let's delve into the functions that will make this magic happen:
 
-- [ ] **register**: This function will register all the routes as it did on the above example.
-- [ ] **configureLink**: This a helper function that **domManager** will invoke when it finds `route` in `options`.
-- [ ] **activate**: This is a private function that is supposed to add a className of `active` to the clicked element.
-- [ ] **deactivate**: A private function that removes the className of `active`.
+- [x] **register**: This function will register all the routes as it did on the above example.
+- [x] **configureLink**: This a helper function that **domManager** will invoke when it finds `route` in `options`.
+- [x] **activate**: This is a private function that is supposed to add a className of `active` to the clicked element.
+- [x] **deactivate**: A private function that removes the className of `active`.
 
 To gain a better understand of the above functions click [here](https://github.com/lindelwa122/dom-manipulation-library/issues).
 
-### createStyleSheet
+### cssManager
 
-Here's how you can use **createStyleSheet** to style content of your page:
+Here's how you can use **cssManager** to style content of your page:
 
 ```javascript
-import { createStyleSheet } from '@dom-manipulation-library/dml';
+import { cssManager } from '@dom-manipulation-library/dml';
 
-createStyleSheet.createCSSRule({
+cssManager.createCSSRule({
   body: {
     color: '#f8f8f8',
     backgroundColor: '#0fa',
@@ -232,10 +263,8 @@ createStyleSheet.createCSSRule({
 });
 ```
 
-- [ ] **createCSSRule**: Takes in an object with selectors and declarations and styles the elements.
-- [ ] **createMediaQueryRule**
-- [ ] **configStateRule**: Adds a style to an element depending on its state.
-- [ ] **createStyle**: Adds a style to an element.
+- [x] **createCSSRule**: Takes in an object with selectors and declarations and styles the elements.
+- [x] **addRule**: Adds a style to an element.
 
 To gain a better understanding of how these functions should work click [here](https://github.com/lindelwa122/dom-manipulation-library/issues).
 
@@ -243,9 +272,9 @@ To gain a better understanding of how these functions should work click [here](h
 
 The store will hold variables that are intended to be accessible throughout the app. Users will be able to retrieve and modify these variables from anywhere within the app.
 
-- [ ] **createStore**: creates all the variables in their initial state.
-- [ ] **getState**: gets the state of a variable.
-- [ ] **updateState**: modifies state.
+- [x] **createStore**: creates all the variables in their initial state.
+- [x] **getState**: gets the state of a variable.
+- [x] **updateState**: modifies state.
 
 Read more about how store should work [here](https://github.com/lindelwa122/dom-manipulation-library/issues).
 
@@ -256,11 +285,11 @@ Read more about how store should work [here](https://github.com/lindelwa122/dom-
 You can contribute not only by writing code but also by assisting us in enhancing this README, drafting documentation, creating tutorials, and more.
 
 - [ ] Enhance this README.
-- [ ] Draft the documentation.
+- [x] Draft the documentation.
 - [ ] Create a tutorial on our website.
 - [ ] Produce video tutorials.
 - [ ] Write tests.
-- [ ] Design a logo for us.
+- [x] Design a logo for us.
 - [ ] Report bugs.
 - [ ] Suggest any additional elements you believe should be included.
 
