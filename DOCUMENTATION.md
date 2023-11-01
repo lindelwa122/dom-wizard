@@ -53,7 +53,7 @@ The `create` function generates an HTML element based on the provided `element` 
 ##### Example 1: Creating a Simple Element
 
 ```javascript
-import domManager from '@dom-manipulation-library/dml';
+import { domManager } from 'dom-wizard';
 
 const simpleElement = {
   tagName: 'div',
@@ -71,7 +71,7 @@ In this example, a `div` element with the specified `id` and `classList` is crea
 ##### Example 2: Appending to a Specific Parent
 
 ```javascript
-import domManager from '@dom-manipulation-library/dml';
+import { domManager } from 'dom-wizard';
 
 const childElement = {
   tagName: 'span',

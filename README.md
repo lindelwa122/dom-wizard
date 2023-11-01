@@ -40,7 +40,7 @@ Read the docs [here]().
 Here's how you can create an element and append it to the DOM:
 
 ```javascript
-import domManager from '@dom-manipulation-library/dml';
+import { domManager } from 'dom-wizard';
 
 const sidebar = () => {
   const upper = {
@@ -80,14 +80,14 @@ Contributions are what make the open source community such an amazing place to l
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
 
-1. [Fork](https://github.com/lindelwa122/dom-manipulation-library/fork) this repository.
+1. [Fork](https://github.com/lindelwa122/dom-wizard/fork) this repository.
 
 2. Clone the repository to your own machine by running one of the following commands:
 
    - HTTPS
 
    ```
-   git clone https://github.com/<your-username>/dom-manipulation-library.git
+   git clone https://github.com/<your-username>/dom-wizard.git
    ```
 
    OR
@@ -95,7 +95,7 @@ If you have a suggestion that would make this better, please fork the repo and c
    - SSH
 
    ```
-   git clone git@github.com:<your-username>/dom-manipulation-library.git
+   git clone git@github.com:<your-username>/dom-wizard.git
    ```
 
    OR
@@ -103,7 +103,7 @@ If you have a suggestion that would make this better, please fork the repo and c
    - Github CLI:
 
    ```
-   gh repo clone <your-username>/dom-manipulation-library
+   gh repo clone <your-username>/dom-wizard
    ```
 
 3. Create a new branch. The name of the branch must reflect the change you are about to make.
@@ -185,7 +185,7 @@ The same thing can be done with ease using the 4 functions that **domManager** w
 - [x] **read**
 - [x] **delete**
 
-The functions will perform precisely as their names suggest, offering functionality to create, update, delete, and read elements. Click [here](https://github.com/lindelwa122/dom-manipulation-library/issues) to read more about how they should operate.
+The functions will perform precisely as their names suggest, offering functionality to create, update, delete, and read elements. Click [here](https://github.com/lindelwa122/dom-wizard/issues) to read more about how they should operate.
 
 ### Router
 
@@ -214,7 +214,7 @@ Here's how you can register routes and navigate to another page.
 **_index.js_**
 
 ```javascript
-import { domManager, router } from '@dom-manipulation-library/dml';
+import { domManager, router } from 'dom-wizard';
 import routes from './routes/router';
 
 const initialPage = {
@@ -242,14 +242,14 @@ Let's delve into the functions that will make this magic happen:
 - [x] **activate**: This is a private function that is supposed to add a className of `active` to the clicked element.
 - [x] **deactivate**: A private function that removes the className of `active`.
 
-To gain a better understand of the above functions click [here](https://github.com/lindelwa122/dom-manipulation-library/issues).
+To gain a better understand of the above functions click [here](https://github.com/lindelwa122/dom-wizard/issues).
 
 ### cssManager
 
 Here's how you can use **cssManager** to style content of your page:
 
 ```javascript
-import { cssManager } from '@dom-manipulation-library/dml';
+import { cssManager } from 'dom-wizard';
 
 cssManager.createCSSRule({
   body: {
@@ -266,7 +266,7 @@ cssManager.createCSSRule({
 - [x] **createCSSRule**: Takes in an object with selectors and declarations and styles the elements.
 - [x] **addRule**: Adds a style to an element.
 
-To gain a better understanding of how these functions should work click [here](https://github.com/lindelwa122/dom-manipulation-library/issues).
+To gain a better understanding of how these functions should work click [here](https://github.com/lindelwa122/dom-wizard/issues).
 
 ### store
 
@@ -276,7 +276,7 @@ The store will hold variables that are intended to be accessible throughout the 
 - [x] **getState**: gets the state of a variable.
 - [x] **updateState**: modifies state.
 
-Read more about how store should work [here](https://github.com/lindelwa122/dom-manipulation-library/issues).
+Read more about how store should work [here](https://github.com/lindelwa122/dom-wizard/issues).
 
 **NOTE:** _An unchecked box indicates that the feature is not yet completed, while a checked box indicates its completion. You are welcome to work on and improve completed features. Additionally, feel free to propose new features via issues. For more details, please refer to our contributing rules [here](/CONTRIBUTING.md)._
 
