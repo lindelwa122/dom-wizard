@@ -1,6 +1,6 @@
 {
-  "name": "@dom-manipulation-library/dml",
-  "version": "1.1.1",
+  "name": "dom-wizard",
+  "version": "0.0.1",
   "description": "JavaScript library that makes DOM manipulation easy and more managable.",
   "main": "index.js",
   "bin": "./bin/cli.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lindelwa122/dom-manipulation-library.git"
+    "url": "git+https://github.com/lindelwa122/dom-wizard.git"
   },
   "keywords": [
     "dom-manipulation",
@@ -19,14 +19,11 @@
     "objects"
   ],
   "author": "Lindelwa",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lindelwa122/dom-manipulation-library/issues"
+    "url": "https://github.com/lindelwa122/dom-wizard/issues"
   },
-  "homepage": "https://github.com/lindelwa122/dom-manipulation-library#readme",
-  "dependencies": {
-    "@dom-manipulation-library/create-project": "^1.0.3"
-  },
+  "homepage": "https://github.com/lindelwa122/dom-wizard#readme",
   "devDependencies": {
     "eslint": "^8.51.0",
     "eslint-config-google": "^0.14.0",
