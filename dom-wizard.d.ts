@@ -38,7 +38,7 @@ declare module 'dom-wizard' {
   /**
    * The domManager module is responsible for creating, updating, reading, and deleting DOM elements.
    */
-  export function domManager(): {
+  export declare const domManager: {
     /**
      * Creates a new HTML element and appends it to a specified parent element.
      *
@@ -100,7 +100,7 @@ declare module 'dom-wizard' {
   /**
    * The cssManager module facilitates the creation and application of CSS styles to elements. It's important to note that this module isn't intended to replace traditional CSS, but rather to provide an API for efficiently adding CSS rules to elements using JavaScript when it's the most suitable approach.
    */
-  export function cssManager(): {
+  export declare const cssManager: {
     /**
      * Adds a CSS rule to the stylesheet.
      *
@@ -175,7 +175,7 @@ declare module 'dom-wizard' {
   /**
    * The router module is responsible for registering routes, linking pages, and configuring URLs.
    */
-  export function router(): {
+  export declare const router: {
     /**
      * Registers the provided routes, allowing them to be used later for navigation.
      *
@@ -210,7 +210,7 @@ declare module 'dom-wizard' {
    * The store module provides a central storage mechanism for managing and sharing data across your application.
    * It allows you to create, retrieve, and update variables within a private store.
    */
-  export function store(): {
+  export declare const store: {
     /**
      * Creates the initial store by accepting an object with key-value pairs. This function throws an error
      * if invoked more than once.
