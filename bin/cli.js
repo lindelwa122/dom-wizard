@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
-const { execSync, exec } = require('child_process');
+const { execSync } = require('child_process');
 
 function runCommand(command) {
   try {
@@ -29,7 +29,18 @@ function createDirectoryContents(templatePath, newProjectPath) {
     const stats = fs.statSync(origFilePath);
 
     if (stats.isFile()) {
-      const contents = fs.readFileSync(origFilePath, 'utf8');
+      let contents = fs.readFileSync(origFilePath, 'utf8');
+
+      if (file === 'index.html') {
+        contents = contents.replace(
+          'DOM Manipulation Library Template',
+          projectName,
+        );
+      }
+
+      if (file === 'package.json') {
+        contents = contents.replace('name-of-your-project', projectName);
+      }
 
       // Rename
       if (file === '.npmignore') file = '.gitignore';
@@ -61,9 +72,7 @@ createDirectoryContents(
   `${CURR_DIR}/${projectName}`,
 );
 
-console.log(`
-  Installing dependencies...
-`);
+console.log('Installing dependencies...');
 
 const installedDeps = runCommand(`cd ${projectName} && npm install`);
 
@@ -72,8 +81,9 @@ if (!installedDeps) process.exit();
 console.log(`
   Congratulations! Your project template has been created.
 
+  run 'cd ${projectName}' to get inside your project
   run 'npm run build' to build your project
-  run 'npm run watch' to open your project on port 8080
+  run 'npm run start' to open your project on port 8080
 
   Happy Coding!
 `);
