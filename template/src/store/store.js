@@ -1,4 +1,4 @@
-import { store } from '@dom-manipulation-library/dml';
+import { store } from 'dom-wizard';
 
 store.createStore({
   // Add your properties and their values here
