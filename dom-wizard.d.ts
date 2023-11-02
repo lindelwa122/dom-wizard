@@ -1,4 +1,4 @@
-declare module '@dom-manipulation-library/dml' {
+declare module 'dom-wizard' {
   type ElementOptions = {
     className?: string;
     id?: string;
