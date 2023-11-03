@@ -347,6 +347,76 @@ const domManager = () => {
   };
 
   /**
+   * Adds new children to an element.
+   *
+   * @param {string} parentSelector - The selector of the element to update children of.
+   * @param {Array} children - An array of children to be added.
+   * @throws {Error} If 'children' is not an array.
+   */
+  const _addChildren = (parentSelector, children) => {
+    if (!Array.isArray(children)) {
+      throw new Error('children must be an array.');
+    }
+
+    for (const child of children) {
+      create(child, parentSelector, true);
+    }
+  };
+
+  /**
+   * Removes children from an element based on a predicate function.
+   *
+   * @param {string} parentSelector - The selector of the element to update children of.
+   * @param {function} predicate - A function that returns true for children to be deleted.
+   * @throws {Error} If the element specified by 'parentSelector' is not found in the DOM.
+   * @throws {Error} If 'predicate' is not a function.
+   */
+  const _removeChild = (parentSelector, predicate) => {
+    const parent = document.querySelector(parentSelector);
+
+    if (!parent) {
+      throw new Error(
+        `The element (${parentSelector}) is not found in the DOM.`,
+      );
+    }
+
+    if (typeof predicate !== 'function') {
+      throw new Error(
+        'predicate must be a function that returns a boolean value',
+      );
+    }
+
+    const childNodes = parent.childNodes;
+
+    for (let i = 0; i < childNodes.length; i++) {
+      const remove = predicate(childNodes[i], i);
+
+      if (remove) childNodes[i].remove();
+    }
+  };
+
+  /**
+   * Updates children of an element, replacing the existing children.
+   *
+   * @param {string} parentSelector - The selector of the element to update children of.
+   * @param {Array} children - An array of new children to be added.
+   * @throws {Error} If 'children' is not an array.
+   */
+  const _updateChildren = (parentSelector, children) => {
+    if (!Array.isArray(children)) {
+      throw new Error('children must be an array.');
+    }
+
+    // Clear children
+    update({ selector: parentSelector, action: 'update', innerHTML: '' });
+
+    // Add new children
+    for (const child of children) {
+      create(child, parentSelector, true);
+    }
+  };
+
+  /**
    * Modifies the information and attributes of elements in the DOM based on the provided instructions.
    *
    * @param {Object} instr - Contains information of the element to be modified and how it should be modified.
@@ -412,6 +482,18 @@ const domManager = () => {
 
       case 'style':
         applyUpdate(_style);
+        break;
+
+      case 'addChildren':
+        _addChildren(instr.selector, instr.children);
+        break;
+
+      case 'removeChild':
+        _removeChild(instr.selector, instr.predicate);
+        break;
+
+      case 'newChildren':
+        _updateChildren(instr.selector, instr.children);
         break;
     }
   };

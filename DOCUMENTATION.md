@@ -230,7 +230,7 @@ The `update()` function is a versatile tool for modifying information and attrib
   }
   ```
 
-- Supported actions are: `toggle`, `replace`, `replaceAll`, `update`, `add`, `remove`, and `style`. Each action has its own required properties.
+- Supported actions are: `toggle`, `replace`, `replaceAll`, `update`, `add`, `remove`, `style`, `addChildren`, `removeChildren`, and `newChildren`. Each action has its own required properties.
 
 #### Error Handling
 
@@ -314,6 +314,56 @@ domManager.update({
   action: 'style',
   backgroundColor: 'red',
   padding: '20px',
+});
+```
+
+#### `addChildren` Action
+
+The `addChildren` action is used to add new children to the element.
+
+##### Usage Example:
+
+```javascript
+import navigation from './components';
+import main from './components';
+
+domManager.update({
+  selector: '.content > div',
+  action: 'addChildren',
+  children: [navigation, main],
+});
+```
+
+#### `removeChild` Action
+
+The `removeChild` removes children from an element based on a predicate function.
+
+##### Usage Example
+
+```javascript
+domManager.update({
+  selector: '.content > div',
+  action: 'removeChildren',
+  predicate: (element) => {
+    return element.dataset.id === 'dfu8-x';
+  },
+});
+```
+
+#### `updateChildren` Action
+
+The `updateChild` updates children of an element, replacing the existing children.
+
+##### Usage Example:
+
+```javascript
+import navigation from './components';
+import main from './components';
+
+domManager.update({
+  selector: '.content > div',
+  action: 'updateChildren',
+  children: [navigation, main],
 });
 ```
 
