@@ -1,3 +1,9 @@
+# 0.0.5 (November 3, 2023)
+
+## package.json
+
+- Remove "type": "module" because it is causing errors.
+
 # 0.0.4 (November 3, 2023)
 
 ## domManager.create
