@@ -1,3 +1,9 @@
+# 0.0.4 (November 3, 2023)
+
+## domManager.update
+
+- Add a way to update children of an element
+
 # 0.0.3 (November 2, 2023)
 
 - Update the declaration file's name.
