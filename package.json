@@ -1,6 +1,6 @@
 {
   "name": "dom-wizard",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "JavaScript library that makes DOM manipulation easy and more managable.",
   "main": "index.js",
   "bin": "./bin/cli.js",
