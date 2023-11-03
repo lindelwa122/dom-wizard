@@ -79,6 +79,7 @@ const router = () => {
    * @param {string} linkInfo.to - The ID of the page to link to.
    * @param {string} [linkInfo.host] - The selector of the element to host the page.
    * @param {HTMLElement} linkInfo.element - The HTML element to attach the click event listener to.
+   * @param {boolean} [linkInfo.animate] - A smooth transition is added when pages are changing if animate is true
    *
    * @throws {Error} If the linkInfo object is missing 'name,' 'to,' or 'element' properties.
    * @throws {Error} If the specified page ID ('to') does not match any registered pages.
@@ -104,9 +105,17 @@ const router = () => {
       // Deactivate all links
       _deactivate(linkInfo.name);
 
+      if (linkInfo.animate) {
+        document.body.style.opacity = 0;
+      }
+
       // Create the element for the page
       const selector = linkInfo.host ? linkInfo.host : '#root';
       domManager.create(page.route, selector);
+
+      if (linkInfo.animate) {
+        document.body.style.opacity = 1;
+      }
 
       // Activate the link
       linkInfo.element.classList.add('active');

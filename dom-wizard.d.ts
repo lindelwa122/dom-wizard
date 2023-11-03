@@ -170,6 +170,7 @@ declare module 'dom-wizard' {
     to: string;
     element: HTMLElement;
     host?: string;
+    animate?: boolean;
   };
 
   /**
@@ -198,6 +199,7 @@ declare module 'dom-wizard' {
      * @param {string} linkInfo.name - The name of the link.
      * @param {string} linkInfo.to - The ID of the page to link to.
      * @param {string} [linkInfo.host] - The selector of the element to host the page.
+     * @param {boolean} [linkInfo.animate] - A smooth transition is added when pages are changing if animate is true
      * @param {HTMLElement} linkInfo.element - The HTML element to attach the click event listener to.
      *
      * @throws {Error} If the linkInfo object is missing 'name,' 'to,' or 'element' properties.
