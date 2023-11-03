@@ -30,7 +30,7 @@ The `create` function generates an HTML element based on the provided `element` 
 
 1. `element` (`Object`): An object providing information about the element to be created. It should have the following properties:
 
-   - `tagName` (`string`, required): Specifies the type of HTML element to create.
+   - `tagName` (`string`): Specifies the type of HTML element to create. The default value is `div` because it is commonly used.
    - `children` (`Array`): An array of child elements to be appended to the created element.
    - `options` (`Object`): Additional options for configuring the element (e.g., `classList`, `id`, `link`, `onclick`).
    - `before` (`function`): Function to be invoked before the element is appended to the page.

@@ -12,14 +12,9 @@ const domManager = () => {
    *
    * @param {Object} element - An object with information about the element to be created (property: 'tagName' is required).
    * @returns {HTMLElement} A newly created HTML element.
-   * @throws Throws an error if 'tagName' is missing, indicating that an element cannot be created without a tagName.
    */
   const _createElement = (element) => {
-    if (!element.tagName) {
-      throw new Error(
-        'tagName is undefined. An element cannot be created without a tagName.',
-      );
-    }
+    if (!element.tagName) element.tagName = 'div';
 
     const el = document.createElement(element.tagName);
 
