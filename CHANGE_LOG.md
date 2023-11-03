@@ -1,3 +1,9 @@
+# 0.0.6 (November 3, 2023)
+
+## domManager.create
+
+- Use `text` outside of `options` to refer to `textContent` because it is commonly used.
+
 # 0.0.5 (November 3, 2023)
 
 ## package.json
