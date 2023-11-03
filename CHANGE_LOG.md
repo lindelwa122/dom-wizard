@@ -1,8 +1,12 @@
 # 0.0.4 (November 3, 2023)
 
+## domManager.create
+
+- Update how after and before work so can work for children of the first-generation elements (@lindelwa122 in #49)
+
 ## domManager.update
 
-- Add a way to update children of an element
+- Add a way to update children of an element. (@lindelwa122 in #51)
 
 # 0.0.3 (November 2, 2023)
 
