@@ -42,6 +42,8 @@ const domManager = () => {
     return el;
   };
 
+  let afterFuncs = [];
+
   /**
    * Creates a DOM tree based on the provided element information.
    *
@@ -59,6 +61,22 @@ const domManager = () => {
     }
 
     const el = _createElement(element);
+
+    if (element.before) {
+      if (typeof element.before !== 'function') {
+        throw new Error("'before' must be a function'");
+      }
+
+      element.before(el);
+    }
+
+    if (element.after) {
+      if (typeof element.after !== 'function') {
+        throw new Error("'after' must be a function'");
+      }
+
+      afterFuncs.push({ func: element.after, arg: el });
+    }
 
     if (element.children) {
       element.children.forEach((child) => {
@@ -82,14 +100,6 @@ const domManager = () => {
   const create = (element, selector = '#root', append = false) => {
     const el = _createDOMTree(element);
 
-    if (element.before) {
-      if (typeof element.before !== 'function') {
-        throw new Error("'before' must be a function'");
-      }
-
-      element.before(el);
-    }
-
     const parent = document.querySelector(selector);
     if (!parent) {
       throw Error(
@@ -103,13 +113,11 @@ const domManager = () => {
 
     parent.appendChild(el);
 
-    if (element.after) {
-      if (typeof element.after !== 'function') {
-        throw new Error("'after' must be a function'");
-      }
-
-      element.after(el);
+    for (const afterFunc of afterFuncs) {
+      afterFunc.func(afterFunc.arg);
     }
+
+    afterFuncs = [];
 
     return parent;
   };
@@ -421,7 +429,7 @@ const domManager = () => {
    *
    * @param {Object} instr - Contains information of the element to be modified and how it should be modified.
    * @param {string} instr.selector - A string to select the element to be modified.
-   * @param {'toggle' | 'replace' | 'replaceAll' | 'update' | 'add' | 'remove' | 'style'} instr.action - The action to be performed on the selected element.
+   * @param {'toggle' | 'replace' | 'replaceAll' | 'update' | 'add' | 'remove' | 'style' | 'addChildren' | 'removeChild' | 'updateChildren' } instr.action - The action to be performed on the selected element.
    * @param {boolean} all - A boolean value to specify if the first or all items matching the selector should be updated
    *
    * @throws {Error} When the 'selector' property is missing in instr.
@@ -492,7 +500,7 @@ const domManager = () => {
         _removeChild(instr.selector, instr.predicate);
         break;
 
-      case 'newChildren':
+      case 'updateChildren':
         _updateChildren(instr.selector, instr.children);
         break;
     }
