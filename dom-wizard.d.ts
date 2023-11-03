@@ -11,7 +11,7 @@ declare module 'dom-wizard' {
   };
 
   type ElementDefinition = {
-    tagName: string;
+    tagName?: string;
     options?: ElementOptions;
     link?: LinkConfig;
     children?: Array<ElementDefinition>;

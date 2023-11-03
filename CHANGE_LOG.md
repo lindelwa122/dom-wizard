@@ -3,6 +3,7 @@
 ## domManager.create
 
 - Update how after and before work so can work for children of the first-generation elements (@lindelwa122 in #49)
+- Make 'div' the default of tagName (@lindelwa122 in #48)
 
 ## domManager.update
 
