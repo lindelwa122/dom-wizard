@@ -1,9 +1,25 @@
+# 0.0.6 (November 3, 2023)
+
+## domManager.create
+
+- Use `text` outside of `options` to refer to `textContent` because it is commonly used.
+
+# 0.0.5 (November 3, 2023)
+
+## package.json
+
+- Remove "type": "module" because it is causing errors.
+
 # 0.0.4 (November 3, 2023)
 
 ## domManager.create
 
 - Update how after and before work so can work for children of the first-generation elements (@lindelwa122 in #49)
 - Make 'div' the default of tagName (@lindelwa122 in #48)
+
+## domManager.router
+
+- Optionally add an animation when pages are changing.
 
 ## domManager.update
 

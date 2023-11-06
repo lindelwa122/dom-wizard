@@ -1,9 +1,10 @@
 {
   "name": "dom-wizard",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "JavaScript library that makes DOM manipulation easy and more managable.",
   "main": "index.js",
   "bin": "./bin/cli.js",
+  "types": "./dom-wizard.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"

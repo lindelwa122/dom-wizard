@@ -22,6 +22,11 @@ const domManager = () => {
       router.configureLink(Object.assign({}, element.link, { element: el }));
     }
 
+    // Use text seperately because it is commonly used
+    if (element.text) {
+      el.textContent = element.text;
+    }
+
     if (!element.options) return el;
 
     for (const [prop, value] of Object.entries(element.options)) {
