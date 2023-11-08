@@ -18,6 +18,6 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "dom-wizard": "^0.0.2"
+    "dom-wizard": "^0.0.6"
   }
 }
