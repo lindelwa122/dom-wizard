@@ -15,9 +15,27 @@
 
 </div>
 
+## Table of Contents
+
+- [About the project](#about-the-project)
+- [Installation](#installation)
+- [Documentation](#documentation)
+- [Quickstart](#quickstart)
+- [Tutorial](#tutorial)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [Features](#features)
+  - [domManager](#dommanager)
+  - [router](#router)
+  - [cssManager](#cssmanager)
+  - [store](#store)
+- [More ways to contribute](#more-ways-to-contribute)
+- [License](#license)
+- [Contact](#contact)
+
 ## About the project
 
-DomWizard is a JavaScript library that simplifies DOM manipulation and CSS styling. It provides functions for creating, updating, reading, and deleting DOM elements, as well as managing CSS styles in a straightforward manner. The library also offers a lightweight routing system and an experimental global variable store for data management.
+DomWizard is a JavaScript library that simplifies DOM manipulation and CSS styling. It provides functions for creating, updating, reading, and deleting DOM elements, as well as straightforwardly managing CSS styles. The library also offers a lightweight routing system and an experimental global variable store for data management.
 
 ## Installation
 
@@ -33,7 +51,17 @@ To install the Dom Wizard and start using its features run:
 npm install dom-wizard
 ```
 
-Read the docs [here]().
+## Documentation
+
+Read the full documentation. [here](/DOCUMENTATION.md).
+
+## Quickstart
+
+To learn more about how to use the library, refer to the Quickstart [here](/QUICKSTART.md).
+
+## Tutorial
+
+[This tutorial](/TUTORIAL.md) will guide you on how to create your app using DOM Wizard and how to use some of the functionalities of the library.
 
 ## Examples
 
