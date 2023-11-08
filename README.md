@@ -15,6 +15,24 @@
 
 </div>
 
+## Table of Contents
+
+- [About the project](#about-the-project)
+- [Installation](#installation)
+- [Documentation](#documentation)
+- [Quickstart](#quickstart)
+- [Tutorial](#tutorial)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [Features](#features)
+  - [domManager](#dommanager)
+  - [router](#router)
+  - [cssManager](#cssmanager)
+  - [store](#store)
+- [More ways to contribute](#more-ways-to-contribute)
+- [License](#license)
+- [Contact](#contact)
+
 ## About the project
 
 DomWizard is a JavaScript library that simplifies DOM manipulation and CSS styling. It provides functions for creating, updating, reading, and deleting DOM elements, as well as straightforwardly managing CSS styles. The library also offers a lightweight routing system and an experimental global variable store for data management.
