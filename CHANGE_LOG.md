@@ -1,3 +1,9 @@
+# 0.0.7 (November 10, 2023)
+
+## domManager.store
+
+- Improve the check, when checking if the value is in store or not. (@lindelwa in #58)
+
 # 0.0.6 (November 3, 2023)
 
 ## domManager.create
