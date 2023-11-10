@@ -51,7 +51,7 @@ const store = () => {
    * @throws {Error} If the key does not exist in the store.
    */
   const updateState = (key, newValue) => {
-    if (!_store[key]) {
+    if (!_store.hasOwnProperty(key)) {
       throw new Error(`Key '${key}' doesn't exist in store`);
     }
 
