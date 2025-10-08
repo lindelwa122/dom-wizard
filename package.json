@@ -1,6 +1,6 @@
 {
   "name": "dom-wizard",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "JavaScript library that makes DOM manipulation easy and more managable.",
   "main": "index.js",
   "bin": "./bin/cli.js",
@@ -26,12 +26,12 @@
   },
   "homepage": "https://github.com/lindelwa122/dom-wizard#readme",
   "devDependencies": {
-    "eslint": "^8.51.0",
+    "eslint": "^9.37.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-config-prettier": "^9.0.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^14.0.1",
-    "prettier": "3.0.3"
+    "eslint-config-prettier": "^10.1.8",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.3",
+    "prettier": "3.6.2"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
