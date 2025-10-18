@@ -6,7 +6,7 @@
   "bin": "./bin/cli.js",
   "types": "./dom-wizard.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "prepare": "husky install"
   },
   "repository": {
@@ -25,12 +25,16 @@
     "url": "https://github.com/lindelwa122/dom-wizard/issues"
   },
   "homepage": "https://github.com/lindelwa122/dom-wizard#readme",
+  "type": "module",
   "devDependencies": {
+    "@jest/globals": "^30.2.0",
     "eslint": "^9.37.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
+    "jest": "^30.2.0",
     "lint-staged": "^16.2.3",
+    "msw": "^2.11.5",
     "prettier": "3.6.2"
   },
   "lint-staged": {
