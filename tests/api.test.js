@@ -1,7 +1,7 @@
 // api.test.js
-import { beforeAll, afterEach, afterAll, describe, test, expect, beforeEach ,jest} from "@jest/globals";
+import { afterEach, test, expect, beforeEach ,jest} from "@jest/globals";
 import { Get,Post,Put,Patch,Delete } from "../modules/apiGateway.js";
-import { json } from "express";
+
 
 
  uid_list={"1":{
@@ -34,7 +34,6 @@ let routeLogic =async(url,options)=>{
         let id =parsed.searchParams.get("id")
         let js =parsed.searchParams.get("json")
         if(options.method ==="GET"){
-
         if (uid_list[id]!= undefined){
         return js?{
             ok:true,
@@ -143,19 +142,6 @@ let routeLogic =async(url,options)=>{
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 let handler=(data)=>{
     console.log("Run Handler: "+JSON.stringify(data))
 }
@@ -166,13 +152,10 @@ let finalhandler=(data)=>{
     console.log("Run Finally: "+JSON.stringify(data))
 }
 
-  const base_url = "https://api.example.com/user/";
- 
-
   test("should handle a 200 GET request correctly", async () => {
-    // Option 1: using handlerCallback
+    
   let uid="6"
-  let res =await Get(`https://example.com/user?id=${uid}`,handler,errorhandler,finalhandler,null,true )
+  let res =await Get(`https://example.com/user?id=${uid}`,handler,errorhandler,finalhandler,true )
 
   expect(res).toEqual({id:uid,message:`fetched user:jamie`})
   expect(global.fetch).toHaveBeenCalledWith(`https://example.com/user?id=${uid}`,{"method": "GET"})
@@ -180,9 +163,9 @@ let finalhandler=(data)=>{
   
 })
   test("should handle a 200 GET request with non json response", async () => {
-    // Option 1: using handlerCallback
+
   let uid="6"
-  let res =await Get(`https://example.com/user?id=${uid}&json=1`,handler,errorhandler,finalhandler,null,false )
+  let res =await Get(`https://example.com/user?id=${uid}&json=1`,handler,errorhandler,finalhandler,false )
 
   expect(res).toEqual(JSON.stringify({id:uid,message:`fetched user:jamie`}))
   expect(global.fetch).toHaveBeenCalledWith(`https://example.com/user?id=${uid}&json=1`,{"method": "GET"})
@@ -190,9 +173,9 @@ let finalhandler=(data)=>{
   
 })
   test("should handle a bad GET request", async () => {
-    // Option 1: using handlerCallback
+   
   let uid="7"
-  let res =await Get(`https://example.com/user?id=${uid}`,handler,errorhandler,finalhandler,null,true )
+  let res =await Get(`https://example.com/user?id=${uid}`,handler,errorhandler,finalhandler,true )
 
   expect(res).toEqual({error:`user:${uid} not found`,status:404})
   expect(global.fetch).toHaveBeenCalledWith(`https://example.com/user?id=${uid}`,{"method": "GET"})
@@ -203,7 +186,7 @@ let finalhandler=(data)=>{
 let jsHeader={ 'Content-Type': 'application/json' }
 
   test("should handle a 200 POST request correctly", async () => {
-    // Option 1: using handlerCallback
+  
    let form={name:"jacob"}
   let res =await Post(`https://example.com/new-user`,form,handler,errorhandler,finalhandler,true )
 
@@ -213,7 +196,7 @@ let jsHeader={ 'Content-Type': 'application/json' }
   
 })
   test("should handle a 200 POST request with non json response", async () => {
-    // Option 1: using handlerCallback
+ 
   
    let form={name:"jacob"}
   let res =await Post(`https://example.com/new-user?json=1`,form,handler,errorhandler,finalhandler,false )
@@ -225,7 +208,7 @@ let jsHeader={ 'Content-Type': 'application/json' }
 })
 
   test("should handle a bad POST request", async () => {
-    // Option 1: using handlerCallback
+    
 
   let form={data:"jacob"}
   let res =await Post(`https://example.com/new-user`,form,handler,errorhandler,finalhandler,true )
@@ -237,7 +220,7 @@ let jsHeader={ 'Content-Type': 'application/json' }
 })
 
   test("should handle a 200 Put request correctly", async () => {
-    // Option 1: using handlerCallback
+   
   let form={id:"8",name:"jacob"}
   let res =await Put(`https://example.com/user?id=${form.id}`,form,handler,errorhandler,finalhandler,true )
 
@@ -248,7 +231,7 @@ let jsHeader={ 'Content-Type': 'application/json' }
 })
 
   test("should handle a bad Put request", async () => {
-    // Option 1: using handlerCallback
+   
 
   let form={id:"8",name:"jacob"}
   let res =await Put(`https://example.com/user`,form,handler,errorhandler,finalhandler,true )
@@ -260,7 +243,7 @@ let jsHeader={ 'Content-Type': 'application/json' }
 })
 
   test("should handle a 200 Patch request correctly", async () => {
-    // Option 1: using handlerCallback
+   
   let form={id:"3",name:"madea"}
   let res =await Patch(`https://example.com/user?id=${form.id}`,form,handler,errorhandler,finalhandler,true )
 
@@ -271,7 +254,7 @@ let jsHeader={ 'Content-Type': 'application/json' }
 })
 
   test("should handle a bad Patch request", async () => {
-    // Option 1: using handlerCallback
+   
 
   let form={id:"9",name:"aron"}
   let res =await Patch(`https://example.com/user?id=${form.id}`,form,handler,errorhandler,finalhandler,true )
@@ -283,7 +266,7 @@ let jsHeader={ 'Content-Type': 'application/json' }
 })
 
   test("should handle a 200 Delete request correctly", async () => {
-    // Option 1: using handlerCallback
+   
   let form={id:"3",name:"madea"}
   let res =await Delete(`https://example.com/user?id=${form.id}`,handler,errorhandler,finalhandler )
 
@@ -293,7 +276,7 @@ let jsHeader={ 'Content-Type': 'application/json' }
 })
 
   test("should handle a bad Delete request", async () => {
-    // Option 1: using handlerCallback
+   
 
   let form={id:"9",name:"aron"}
   let res =await Delete(`https://example.com/user?id=${form.id}`,handler,errorhandler,finalhandler )

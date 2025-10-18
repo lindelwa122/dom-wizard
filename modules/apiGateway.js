@@ -1,4 +1,4 @@
-export const Get = async (url, handlerCallback, errorCallback, finalCallback, body = null, json = false) => {
+export const Get = async (url, handlerCallback=()=>{}, errorCallback=()=>{}, finalCallback=()=>{}, json = false) => {
  
     const response = await fetch(url,{method:"GET"});
     let data;
@@ -16,7 +16,7 @@ export const Get = async (url, handlerCallback, errorCallback, finalCallback, bo
   
 };
 
-export let Post=async(url,body,handlerCallback,errorCallback,finalCallback,json=false,headers={ 'Content-Type': 'application/json' })=>{
+export let Post=async(url,body,handlerCallback=()=>{},errorCallback=()=>{},finalCallback=()=>{},json=false,headers={ 'Content-Type': 'application/json' })=>{
 
     let response=await fetch(url,
         {method:"POST",
@@ -36,8 +36,7 @@ export let Post=async(url,body,handlerCallback,errorCallback,finalCallback,json=
     return data;
   
 }
-
-export let Put=async(url,body,handlerCallback,errorCallback,finalCallback,json=false,headers={ 'Content-Type': 'application/json' })=>{
+export let Put=async(url,body,handlerCallback=()=>{},errorCallback=()=>{},finalCallback=()=>{},json=false,headers={ 'Content-Type': 'application/json' })=>{
     let response =await fetch(url,
         {method:"PUT",
             headers:headers,
@@ -57,8 +56,7 @@ export let Put=async(url,body,handlerCallback,errorCallback,finalCallback,json=f
   
 
 }
-
-export let Patch=async(url,body,handlerCallback,errorCallback,finalCallback,json=false,headers={ 'Content-Type': 'application/json' })=>{
+export let Patch=async(url,body,handlerCallback=()=>{},errorCallback=()=>{},finalCallback=()=>{},json=false,headers={ 'Content-Type': 'application/json' })=>{
     let response =await fetch(url,
         {method:"PATCH",
             headers:headers,
@@ -75,11 +73,8 @@ export let Patch=async(url,body,handlerCallback,errorCallback,finalCallback,json
     }
     finalCallback && finalCallback(data);
     return data;
-  
-
 }
-
-export let Delete=async(url,handlerCallback,errorCallback,finalCallback)=>{
+export let Delete=async(url,handlerCallback=()=>{},errorCallback=()=>{},finalCallback=()=>{})=>{
     let response =await fetch(url,
         {method:"DELETE"}
     )
@@ -93,6 +88,4 @@ export let Delete=async(url,handlerCallback,errorCallback,finalCallback)=>{
     }
     finalCallback && finalCallback(data);
     return data;
-  
-
 }
