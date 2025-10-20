@@ -1,4 +1,5 @@
-export const Get = async (url, handlerCallback=()=>{}, errorCallback=()=>{}, finalCallback=()=>{}, json = false) => {
+let apiGateway={ 
+   get : async (url, handlerCallback=()=>{}, errorCallback=()=>{}, finalCallback=()=>{}, json = false) => {
  
     const response = await fetch(url,{method:"GET"});
     let data;
@@ -14,9 +15,9 @@ export const Get = async (url, handlerCallback=()=>{}, errorCallback=()=>{}, fin
     finalCallback && finalCallback(data);
     return data;
   
-};
+},
 
-export let Post=async(url,body,handlerCallback=()=>{},errorCallback=()=>{},finalCallback=()=>{},json=false,headers={ 'Content-Type': 'application/json' })=>{
+  post:async(url,body,handlerCallback=()=>{},errorCallback=()=>{},finalCallback=()=>{},json=false,headers={ 'Content-Type': 'application/json' })=>{
 
     let response=await fetch(url,
         {method:"POST",
@@ -35,8 +36,8 @@ export let Post=async(url,body,handlerCallback=()=>{},errorCallback=()=>{},final
     finalCallback && finalCallback(data);
     return data;
   
-}
-export let Put=async(url,body,handlerCallback=()=>{},errorCallback=()=>{},finalCallback=()=>{},json=false,headers={ 'Content-Type': 'application/json' })=>{
+},
+  put:async(url,body,handlerCallback=()=>{},errorCallback=()=>{},finalCallback=()=>{},json=false,headers={ 'Content-Type': 'application/json' })=>{
     let response =await fetch(url,
         {method:"PUT",
             headers:headers,
@@ -55,8 +56,8 @@ export let Put=async(url,body,handlerCallback=()=>{},errorCallback=()=>{},finalC
     return data;
   
 
-}
-export let Patch=async(url,body,handlerCallback=()=>{},errorCallback=()=>{},finalCallback=()=>{},json=false,headers={ 'Content-Type': 'application/json' })=>{
+},
+ patch:async(url,body,handlerCallback=()=>{},errorCallback=()=>{},finalCallback=()=>{},json=false,headers={ 'Content-Type': 'application/json' })=>{
     let response =await fetch(url,
         {method:"PATCH",
             headers:headers,
@@ -73,8 +74,8 @@ export let Patch=async(url,body,handlerCallback=()=>{},errorCallback=()=>{},fina
     }
     finalCallback && finalCallback(data);
     return data;
-}
-export let Delete=async(url,handlerCallback=()=>{},errorCallback=()=>{},finalCallback=()=>{})=>{
+},
+  delete:async(url,handlerCallback=()=>{},errorCallback=()=>{},finalCallback=()=>{})=>{
     let response =await fetch(url,
         {method:"DELETE"}
     )
@@ -88,4 +89,6 @@ export let Delete=async(url,handlerCallback=()=>{},errorCallback=()=>{},finalCal
     }
     finalCallback && finalCallback(data);
     return data;
-}
+}}
+
+export default apiGateway
