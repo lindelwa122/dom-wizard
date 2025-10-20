@@ -1,4 +1,3 @@
-import apiGateway from './apiGateway';
 import router from './router';
 
 /**
