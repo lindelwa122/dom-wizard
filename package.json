@@ -35,5 +35,8 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
+  },
+  "dependencies": {
+    "nanoid": "^5.1.6"
   }
 }
