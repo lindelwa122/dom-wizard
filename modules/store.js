@@ -1,13 +1,17 @@
 /**
  * The store module provides a central storage mechanism for managing and sharing data across your application.
  * It allows you to create, retrieve, and update variables within a private store.
+ *
+ * NEW: Added Redux-style support with reducers, dispatch, and state.
  */
+
 const store = () => {
+  // ------------------ Private store for backward-compatible API ------------------
   const _store = {};
 
   /**
-   * Creates the initial store by accepting an object with key-value pairs. This function throws an error
-   * if invoked more than once.
+   * Creates the initial store by accepting an object with key-value pairs.
+   * Throws an error if invoked more than once.
    *
    * @param {Object} storeObject - An object containing properties and values to be stored in the store.
    *
@@ -17,7 +21,7 @@ const store = () => {
   const createStore = (storeObject) => {
     if (
       !(
-        storeObject !== null &&
+        storeObject &&
         typeof storeObject === 'object' &&
         !Array.isArray(storeObject)
       )
@@ -58,7 +62,49 @@ const store = () => {
     _store[key] = newValue;
   };
 
-  return { createStore, getState, updateState };
+  // ------------------ Redux-style additions ------------------
+  const state = {}; // new Redux-style state container
+  const reducers = {}; // object to hold registered reducers
+
+  /**
+   * Registers reducers for the Redux-style store.
+   * Each reducer must be a function and will be invoked to initialize its slice of state.
+   *
+   * @param {Object} reducersObj - Object of reducers in the format { key: reducerFunction }
+   *
+   * @throws {Error} If any reducer is not a function.
+   */
+  const registerReducers = (reducersObj) => {
+    for (const key in reducersObj) {
+      if (typeof reducersObj[key] !== 'function') {
+        throw new Error(`Reducer for key '${key}' must be a function`);
+      }
+      reducers[key] = reducersObj[key];
+      state[key] = reducers[key](undefined, {}); // initialize state for each reducer
+    }
+  };
+
+  /**
+   * Dispatches an action to all registered reducers.
+   * Updates the Redux-style state for each reducer based on the action.
+   *
+   * @param {Object} action - Action object in the format { type, payload }
+   */
+  const dispatch = (action) => {
+    for (const key in reducers) {
+      state[key] = reducers[key](state[key], action);
+    }
+  };
+
+  // ------------------ Return all functions ------------------
+  return {
+    createStore, // legacy store creation
+    getState, // legacy get value
+    updateState, // legacy update value
+    registerReducers, // new Redux-style reducer registration
+    dispatch, // new Redux-style dispatch
+    state, // Redux-style state container
+  };
 };
 
 export default store();
