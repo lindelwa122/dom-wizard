@@ -165,29 +165,29 @@ At this point, your `landingPage.js` should look like this:
 ```javascript
 const mainContent = () => {
   const heading = {
-    tagName: "h1",
-    text: "Todo App Made With DOM Wizard",
+    tagName: 'h1',
+    text: 'Todo App Made With DOM Wizard',
     options: {
       style: {
-        fontSize: "4rem",
-        paddingTop: "100px",
-        marginBottom: "30px",
+        fontSize: '4rem',
+        paddingTop: '100px',
+        marginBottom: '30px',
       },
     },
   };
 
   const button = {
-    tagName: "button",
-    text: "Get Started",
+    tagName: 'button',
+    text: 'Get Started',
     options: {
       style: {
-        padding: "10px 20px",
-        borderRadius: "17px",
-        fontSize: "1.2rem",
-        backgroundColor: "purple",
-        color: "white",
-        cursor: "pointer",
-        border: "none",
+        padding: '10px 20px',
+        borderRadius: '17px',
+        fontSize: '1.2rem',
+        backgroundColor: 'purple',
+        color: 'white',
+        cursor: 'pointer',
+        border: 'none',
       },
     },
   };
@@ -196,12 +196,13 @@ const mainContent = () => {
     children: [heading, button],
     options: {
       style: {
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-        justifyContent: "center",
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'column',
+        justifyContent: 'center',
       },
-    };
+    },
+  };
 };
 
 const landingPage = {
@@ -237,30 +238,29 @@ Your `header.js` should look like this:
 
 ```javascript
 const leftDiv = {
-  text: "ToDo",
+  text: 'ToDo',
   options: {
     style: {
-      fontSize: "1.2rem",
+      fontSize: '1.2rem',
       fontWeight: 800,
     },
-  };
+  },
+};
 
 const rightDiv = {
-  text: "DOM Wizard",
+  text: 'DOM Wizard',
 };
 
 const header = {
-  options:
-
- {
-    id: "header",
+  options: {
+    id: 'header',
     style: {
-      padding: "25px 20px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      backgroundColor: "purple",
-      color: "white",
+      padding: '25px 20px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      backgroundColor: 'purple',
+      color: 'white',
     },
   },
   children: [leftDiv, rightDiv],
@@ -289,7 +289,7 @@ Open the browser again, and you'll see the updated version of the landing page w
 
 Now, let's create the home page. Create `home.js` in the `routes` directory and add the following code to your `index.js`:
 
-**_src/routes/index.js:_**
+**_src/routes/home.js:_**
 
 ```javascript
 import header from '../components/header';
@@ -480,29 +480,29 @@ To make this work, let's start by creating an 'emptyView.' In 'components,' crea
 ```javascript
 const emptyView = () => {
   const heading = {
-    tagName: "p",
+    tagName: 'p',
     options: {
-      textContent: "No Todos Yet",
+      textContent: 'No Todos Yet',
       style: {
-        fontSize: "3rem",
-        paddingTop: "100px",
-        marginBottom: "30px",
+        fontSize: '3rem',
+        paddingTop: '100px',
+        marginBottom: '30px',
       },
     },
   };
 
   const button = {
-    tagName: "button",
+    tagName: 'button',
     options: {
-      textContent: "Create your first todo",
+      textContent: 'Create your first todo',
       style: {
-        padding: "10px 20px",
-        borderRadius: "17px",
-        fontSize: "1.2rem",
-        backgroundColor: "purple",
-        color: "white",
-        cursor: "pointer",
-        border: "none",
+        padding: '10px 20px',
+        borderRadius: '17px',
+        fontSize: '1.2rem',
+        backgroundColor: 'purple',
+        color: 'white',
+        cursor: 'pointer',
+        border: 'none',
       },
     },
   };
@@ -510,14 +510,15 @@ const emptyView = () => {
   return {
     children: [heading, button],
     options: {
-      className: "empty-view",
+      className: 'empty-view',
       style: {
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-        justifyContent: "center",
+        display: 'flex',
+        alignItems: 'center',
+        flexDirection: 'column',
+        justifyContent: 'center',
       },
-    };
+    },
+  };
 };
 
 export default emptyView();
@@ -541,9 +542,7 @@ export default home;
 
 Now, if you open the app in your browser and navigate to the home page, you'll see that it looks different now. Let's add 'todos.' We'll use a form and a dialog for that. So, let's get started. In 'components,' create 'dialog.js.'
 
-Start your 'dialog.js' with this code
-
-:
+Start your 'dialog.js' with this code:
 
 **_src/components/dialog.js:_**
 
@@ -568,7 +567,7 @@ export default dialog;
 
 In 'header,' we'll have an 'x' icon that will close the modal if clicked. Update 'header' like this:
 
-**\*src/components/header.js:\*\***
+**_src/components/dialog.js:_**
 
 ```javascript
 import xLg from 'bootstrap-icons/icons/x-lg.svg';
@@ -775,7 +774,7 @@ cssManager.createCSSRules([
   {
     '.todo': `
       display: flex;
-      justify-content: space between;
+      justify-content: space-between;
       gap: 10px;
       align-items: center;
       border-bottom: 1px solid;
