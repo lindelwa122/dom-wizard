@@ -1,37 +1,25 @@
 /**
- * Item
- * Represents an individual list element.
+ * Creates an Item element representing a single list entry.
  *
- * @param {object} params - The configuration object.
- * @param {string} params.text - The visible text of the item.
- * @param {function} [params.onClick] - Optional callback triggered when the item is clicked.
- * @param {object} [params.styles={}] - Optional style overrides for the list item.
- *
- * @returns {DomElement} A DomWizard list item element.
- *
- * Example:
- * Item({ text: 'Home', onClick: () => console.log('Home clicked') })
+ * @param {string} text - The visible text content of the item.
+ * @param {Object} [options={}] - Optional item configuration.
+ * @param {function(Event): void} [options.onClick] - Callback triggered when the item is clicked.
+ * @param {Object} [options.styles={}] - Custom CSS style overrides for the list item.
+ * @throws {TypeError} If `text` is not a string.
+ * @returns {DomWizardElement} A domManager element representing the list item.
  */
-export function Item({ text, onClick, styles = {} }) {
+export const Item = (text, options = {}) => {
     if (typeof text !== "string")
-        throw new TypeError("Label text must be a string.");
+        throw new TypeError("Item text must be a string.");
+
+    const { onClick, styles = {} } = options;
 
     return {
-        tagName : "li",
-        children: [text],
+        tagName: "li",
         options: {
-        style: {
-            cursor: onClick ? "pointer" : "default",
-            padding: "6px 10px",
-            transition: "background 0.2s ease",
-            borderRadius: "6px",
-            ...styles,
+            textContent: text,
+            style: styles,
+            onclick: onClick,
         },
-        onclick: onClick || null,
-        onmouseenter: onClick ? (e) => e.target.style.background = "#f3f3f3" : null,
-        onmouseleave: onClick ? (e) => e.target.style.background = "" : null,
-    }
-  }
-
-
-}
+    };
+};
