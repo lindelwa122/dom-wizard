@@ -58,7 +58,14 @@ const store = () => {
     _store[key] = newValue;
   };
 
-  return { createStore, getState, updateState };
+  const dispatch = (callback) => {
+    if (typeof callback !== 'function') {
+      throw new TypeError('dispatch expects a function');
+    }
+    return callback(_store);
+  };
+
+  return { createStore, getState, updateState, dispatch };
 };
 
 export default store();
