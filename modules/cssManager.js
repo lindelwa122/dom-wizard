@@ -1,5 +1,5 @@
 /**
- * The cssManager module facilitates the creation and application of CSS styles to elements. It's important to note that this module isn't intended to replace traditional CSS, but rather to provide an API for efficiently adding CSS rules to elements using JavaScript when it's the most suitable approach.
+ * The cssManager module facilitates the creation and application of CSS styles to elements. It's important to note that this module isn't intended to replace traditional CSS, but rather to provide an updae for efficiently adding CSS rules to elements using JavaScript when it's the most suitable approach.
  */
 const cssManager = () => {
   const style = document.createElement('style');
