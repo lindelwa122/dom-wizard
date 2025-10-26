@@ -5,8 +5,9 @@
   "main": "index.js",
   "bin": "./bin/cli.js",
   "types": "./dom-wizard.d.ts",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "prepare": "husky install"
   },
   "repository": {
@@ -26,10 +27,15 @@
   },
   "homepage": "https://github.com/lindelwa122/dom-wizard#readme",
   "devDependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/preset-env": "^7.28.5",
+    "babel-jest": "^29.7.0",
     "eslint": "^9.37.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^10.1.8",
     "husky": "^9.1.7",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "^16.2.3",
     "prettier": "3.6.2"
   },
