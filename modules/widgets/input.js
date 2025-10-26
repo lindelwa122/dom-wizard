@@ -1,5 +1,3 @@
-import { nanoid } from "nanoid";
-
 /**
  * Creates an input element with customizable options.
  *
@@ -18,36 +16,33 @@ import { nanoid } from "nanoid";
  */
 
 export const Input = (type, options = {}) => {
-    if (typeof type != "string") {
-        throw new TypeError("Input type must be a string.");
-    }
+  if (typeof type != 'string') {
+    throw new TypeError('Input type must be a string.');
+  }
 
-    const {
-        placeholder = "",
-        value = "",
-        onChange,
-        onFocus,
-        onBlur,
-        styles = {},
-        disabled = false,
-        name,
-    } = options;
+  const {
+    placeholder = '',
+    value = '',
+    onChange,
+    onFocus,
+    onBlur,
+    styles = {},
+    disabled = false,
+    name,
+  } = options;
 
-    const inputId = "input-" + nanoid();
-
-    return {
-        tagName: "input",
-        options: {
-            id: inputId,
-            type,
-            placeholder,
-            value,
-            name,
-            style: styles,
-            disabled,
-            oninput: (e) => onChange && onChange(e),
-            onfocus: (e) => onFocus && onFocus(e),
-            onblur: (e) => onBlur && onBlur(e),
-        },
-    };
+  return {
+    tagName: 'input',
+    options: {
+      type,
+      placeholder,
+      value,
+      name,
+      style: styles,
+      disabled,
+      oninput: (e) => onChange && onChange(e),
+      onfocus: (e) => onFocus && onFocus(e),
+      onblur: (e) => onBlur && onBlur(e),
+    },
+  };
 };
