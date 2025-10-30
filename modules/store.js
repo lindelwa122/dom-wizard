@@ -2,8 +2,11 @@
  * The store module provides a central storage mechanism for managing and sharing data across your application.
  * It allows you to create, retrieve, and update variables within a private store.
  */
+import { nanoid } from 'nanoid';
+
 const store = () => {
   const _store = {};
+  const _subscriptions = [];
 
   /**
    * Creates the initial store by accepting an object with key-value pairs. This function throws an error
@@ -56,9 +59,41 @@ const store = () => {
     }
 
     _store[key] = newValue;
+
+    // Trigger all subscribed callbacks with the updated state
+    _subscriptions.forEach(sub => sub.callback(_store));
   };
 
-  return { createStore, getState, updateState };
+  /**
+   * Subscribes a callback function to be invoked whenever the state changes.
+   *
+   * @param {Function} callback - The callback function to be invoked when state changes.
+   * @returns {number} A unique subscription ID that can be used to unsubscribe.
+   */
+  const subscribe = (callback) => {
+    if (typeof callback !== 'function') {
+      throw new Error('Callback must be a function');
+    }
+
+    const id = nanoid();
+    _subscriptions.push({ id, callback });
+
+    return id;
+  };
+
+  /**
+   * Unsubscribes a callback function using its subscription ID.
+   *
+   * @param {string} subscriptionId - The unique ID returned by subscribe().
+   */
+  const unsubscribe = (subscriptionId) => {
+    const index = _subscriptions.findIndex(sub => sub.id === subscriptionId);
+    if (index > -1) {
+      _subscriptions.splice(index, 1);
+    }
+  };
+
+  return { createStore, getState, updateState, subscribe, unsubscribe };
 };
 
 export default store();
